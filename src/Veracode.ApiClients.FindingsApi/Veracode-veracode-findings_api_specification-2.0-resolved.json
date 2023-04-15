@@ -1,0 +1,900 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Veracode Findings API Documentation\n\nUse one of the following base URLs depending on the region for your account:\n* https://api.veracode.com/ - Veracode US Region (default)\n* https://api.veracode.eu/ - Veracode European Region\n* https://api.veracode.us/ - Veracode US Federal Region",
+    "version": "2.0",
+    "title": "Veracode Findings API Specification",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "api.veracode.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Application findings information.",
+      "description": "Returns findings information from Veracode scans."
+    },
+    {
+      "name": "CWE API information",
+      "description": "Returns CWE information for the findings in the scan."
+    }
+  ],
+  "paths": {
+    "/appsec/v1/categories": {
+      "get": {
+        "tags": [
+          "CWE API information"
+        ],
+        "summary": "getCategories",
+        "description": "Returns a list of CWE categories.",
+        "operationId": "getCategoriesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number. Defaults to 0.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Page size (0-500). The default is 100.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourceOfCategory"
+            }
+          },
+          "400": {
+            "description": "Invalid request. Verify all the components of your request and try again."
+          },
+          "401": {
+            "description": "You are not authorized to perform this action."
+          },
+          "403": {
+            "description": "Access denied. You are not authorized to make this request."
+          },
+          "404": {
+            "description": "Category page not found. Verify the URI and try again."
+          },
+          "429": {
+            "description": "Request limit exceeded. You have sent too many requests in a single time period. Submit your request again later."
+          },
+          "500": {
+            "description": "Server-side error. Please try again later."
+          }
+        }
+      }
+    },
+    "/appsec/v1/categories/{category}": {
+      "get": {
+        "tags": [
+          "CWE API information"
+        ],
+        "summary": "getCategory",
+        "description": "Returns CWE Category information and links to associated resources.",
+        "operationId": "getCategoryUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "description": "The CWE category identifier.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to perform this action."
+          },
+          "403": {
+            "description": "Access denied. You are not authorized to make this request."
+          },
+          "404": {
+            "description": "Category details page not found. Verify the URI and try again."
+          },
+          "429": {
+            "description": "Request limit exceeded. You have sent too many requests in a single time period. Submit your request again later."
+          },
+          "500": {
+            "description": "Server-side error. Please try again later."
+          }
+        }
+      }
+    },
+    "/appsec/v1/cwes": {
+      "get": {
+        "tags": [
+          "CWE API information"
+        ],
+        "summary": "getCwes",
+        "description": "Returns a list of CWEs.",
+        "operationId": "getCwesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number. Defaults to 0.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Page size (0-500). The default is 100.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourceOfCwe"
+            }
+          },
+          "400": {
+            "description": "Invalid request. Verify all the components of your request and try again."
+          },
+          "401": {
+            "description": "You are not authorized to perform this action."
+          },
+          "403": {
+            "description": "Access denied. You are not authorized to make this request."
+          },
+          "404": {
+            "description": "CWE page not found. Verify the URI and try again."
+          },
+          "429": {
+            "description": "Request limit exceeded. You have sent too many requests in a single time period. Submit your request again later."
+          },
+          "500": {
+            "description": "Server-side error. Please try again later."
+          }
+        }
+      }
+    },
+    "/appsec/v1/cwes/{cwe}": {
+      "get": {
+        "tags": [
+          "CWE API information"
+        ],
+        "summary": "getCwe",
+        "description": "Returns CWE information and links to associated resources.",
+        "operationId": "getCweUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cwe",
+            "in": "path",
+            "description": "The CWE ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/Cwe"
+            }
+          },
+          "401": {
+            "description": "You are not authorized to perform this action."
+          },
+          "403": {
+            "description": "Access denied. You are not authorized to make this request."
+          },
+          "404": {
+            "description": "CWE details page not found. Verify the URI and try again."
+          },
+          "429": {
+            "description": "Request limit exceeded. You have sent too many requests in a single time period. Submit your request again later."
+          },
+          "500": {
+            "description": "Server-side error. Please try again later."
+          }
+        }
+      }
+    },
+    "/appsec/v2/applications/{application_guid}/findings": {
+      "get": {
+        "tags": [
+          "Application findings information."
+        ],
+        "summary": "getFindings",
+        "description": "Returns findings information from Veracode scans.",
+        "operationId": "getFindingsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "application_guid",
+            "in": "path",
+            "description": "The application identifier.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "description": "Context type, which filters results to show only the findings of this specific context type. The findings status parameter is relative to this context parameter.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "cve",
+            "in": "query",
+            "description": "CVE ID.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "cvss",
+            "in": "query",
+            "description": "CVSS ID (0-10), which can be double (decimal) values. This filter returns all findings with a CVSS value equal to the provided value.",
+            "required": false,
+            "type": "number",
+            "format": "double",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "cvss_gte",
+            "in": "query",
+            "description": "CVSS ID (0-10), which can be double (decimal) values. This filter returns all findings with a CVSS value greater than or equal to the provided value.",
+            "required": false,
+            "type": "number",
+            "format": "double",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "cwe",
+            "in": "query",
+            "description": "CWE ID (single or comma-delimited).",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "finding_category",
+            "in": "query",
+            "description": "Category of finding (single or comma-delimited). Not valid for the SCA scan type.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "include_annot",
+            "in": "query",
+            "description": "Use this flag to include the annotations in the response. Not valid for the SCA scan type.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "include_exp_date",
+            "in": "query",
+            "description": "Use this flag to include findings grace period expiry date in the response.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "mitigated_after",
+            "in": "query",
+            "description": "Return all findings with annotations mitigated after the specified date. Does not apply to the SCA scan type. Use date format: yyyy-MM-dd",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "new",
+            "in": "query",
+            "description": "Use this flag to include only new findings in the current context (policy or sandbox) in the response.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sca_dep_mode",
+            "in": "query",
+            "description": "Return all findings with the specified SCA dependency mode. Only valid for the SCA scan type.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false,
+            "enum": [
+              "UNKNOWN",
+              "DIRECT",
+              "TRANSITIVE",
+              "BOTH"
+            ]
+          },
+          {
+            "name": "sca_scan_mode",
+            "in": "query",
+            "description": "Return all findings from SCA scans of the specified scan mode. Only valid for the SCA scan type.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false,
+            "enum": [
+              "UPLOAD",
+              "AGENT",
+              "BOTH"
+            ]
+          },
+          {
+            "name": "scan_type",
+            "in": "query",
+            "description": "Type of scan in which the finding was found (single or comma-delimited).",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "STATIC",
+                "DYNAMIC",
+                "MANUAL",
+                "SCA"
+              ]
+            },
+            "collectionFormat": "multi",
+            "allowEmptyValue": false,
+            "enum": [
+              "STATIC",
+              "DYNAMIC",
+              "MANUAL",
+              "SCA"
+            ]
+          },
+          {
+            "name": "severity",
+            "in": "query",
+            "description": "This filter returns all findings with this severity value (0-5).",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "severity_gte",
+            "in": "query",
+            "description": "This filter returns all scan findings with a severity value greater or equal to the value of the filter (0-5).",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "violates_policy",
+            "in": "query",
+            "description": "Use this flag to filter the results based on whether the results violate the policy associated with the application. True means the results negatively impact the policy and should be fixed. Not valid for the SCA scan type.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourceOfFinding"
+            }
+          },
+          "400": {
+            "description": "Invalid request. Verify all the components of your request and try again."
+          },
+          "401": {
+            "description": "You are not authorized to perform this action."
+          },
+          "403": {
+            "description": "Access denied. You are not authorized to make this request."
+          },
+          "404": {
+            "description": "Finding page not found. Verify the URI and try again."
+          },
+          "429": {
+            "description": "Request limit exceeded. You have sent too many requests in a single time period. Submit your request again later."
+          },
+          "500": {
+            "description": "Server-side error. Please try again later."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Annotation": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "The mitigation action that was applied to the finding.",
+          "enum": [
+            "COMMENT",
+            "FP",
+            "APPDESIGN",
+            "OSENV",
+            "NETENV",
+            "REJECTED",
+            "APPROVED",
+            "CONFORMS",
+            "DEVIATES",
+            "CUSTOMCLEANSERAPPROVED",
+            "REMEDIATED",
+            "NOACTIONTAKEN",
+            "REOPENED",
+            "CUSTOMCLEANSERPROPOSED",
+            "CUSTOMCLEANSERUSERCOMMENT",
+            "LIBRARY",
+            "ACCEPTRISK",
+            "DEFER",
+            "BYENV",
+            "BYDESIGN",
+            "REJECT",
+            "APPROVE"
+          ]
+        },
+        "comment": {
+          "type": "string",
+          "description": "All comments associated with the mitigation action."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the annotation was added. The date/time format is per RFC3339 and ISO-8601, and the timezone is UTC. Example: 2019-04-12T23:20:50.52Z."
+        },
+        "remaining_risk": {
+          "type": "string",
+          "description": "The value in the Remaining Risk field from the comment column."
+        },
+        "specifics": {
+          "type": "string",
+          "description": "The value in the Specifics field from the comment column."
+        },
+        "technique": {
+          "type": "string",
+          "description": "The value in the Technique field from the comment column."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The user who added the comment."
+        },
+        "verification": {
+          "type": "string",
+          "description": "The value of the Verification field in the Comment column."
+        }
+      },
+      "title": "Annotation",
+      "description": "The action that was performed on a resource."
+    },
+    "CWEReference": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "CWEReference"
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The CWE category."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Unique ID of the category."
+        },
+        "name": {
+          "type": "string",
+          "description": "Category name."
+        },
+        "recommendation": {
+          "type": "string",
+          "description": "Category recommendation."
+        }
+      },
+      "title": "Category",
+      "description": "The finding category."
+    },
+    "Cwe": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "CWE description"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The unique CWE ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "CWE name"
+        },
+        "recommendation": {
+          "type": "string",
+          "description": "CWE recommendation."
+        },
+        "references": {
+          "type": "array",
+          "description": "CWE reference name and URL.",
+          "items": {
+            "$ref": "#/definitions/CWEReference"
+          }
+        },
+        "remediation_effort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The level of effort it will take to fix this finding. Values: 1=Trivial, 2=Implementation error, 3=Complex implementation error, 4=Simple design error, 5=Complex design error."
+        },
+        "severity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "CWE severity"
+        }
+      },
+      "title": "Cwe",
+      "description": "CWE (Common Weakness Enumeration)."
+    },
+    "EmbeddedCategory": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Category"
+          }
+        }
+      },
+      "title": "EmbeddedCategory"
+    },
+    "EmbeddedCwe": {
+      "type": "object",
+      "properties": {
+        "cwes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Cwe"
+          }
+        }
+      },
+      "title": "EmbeddedCwe"
+    },
+    "EmbeddedFinding": {
+      "type": "object",
+      "properties": {
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Finding"
+          }
+        }
+      },
+      "title": "EmbeddedFinding"
+    },
+    "Finding": {
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "type": "array",
+          "description": "All comments and explanatory notes related to this application finding.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          }
+        },
+        "build_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The build ID."
+        },
+        "context_guid": {
+          "type": "string",
+          "description": "The context ID."
+        },
+        "context_type": {
+          "type": "string",
+          "description": "Context type, which filters results to show only the findings of this specific context type. The findings status parameter is relative to this context parameter.",
+          "enum": [
+            "APPLICATION",
+            "SANDBOX"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of times a finding occurs in an application, often referred to as prevalence."
+        },
+        "description": {
+          "type": "string",
+          "description": "The detailed description of the finding."
+        },
+        "finding_details": {
+          "type": "object",
+          "description": " | Common:\n cwe: CWE (Common Weakness Enumeration);\n cvss: the CVSS associated with the finding;\n severity: Severity of the finding;\n\n | Static:\n exploitability: the likelihood that this finding could be exploited by an attacker. Values: -2: Very Unlikely, -1: Unlikely, 0: Neutral, 1: Likely, 2: Very Likely.;\n attack_vector: the function or class where the flaw exists;\n file_line_number: line number in file;\n file_name: filename;\n file_path: file path;\n finding_category: the finding category;\n module: module name;\n procedure: name of the procedure where the flaw exists;\n relative_location: relative location of the flaw in the procedure;\n\n | Dynamic: \n attack_vector: URL or some input parameter;\n hostname: hostname of the URL that contains the vulnerability;\n port: the port of the hostname that was attacked;\n path: URI path;\n plugin: the type of attack sent;\n finding_category: The finding category;\n URL: URL of location where the flaw exists;\n vulnerable_parameter: the parameter that contains a vulnerability;\n discovered_by_vsa: whether discovered by Virtual Scan Appliance;\n\n | Manual:\n capec_id: attack category which contains subcategories as (abuse of functionality, spoofing, probabilistic techniques, exploitation of authentication, resource depletion, exploitation of privilege/trust, injection, data structure attacks, data leakage attacks, resource manipulation, time and state attacks);\n exploit_desc: description of the cause of the flaw;\n exploit_difficulty: category of level of effort needed to fix the flaw;\n input_vector: URL for the attack vector;\n location: relative location of flaw;\n module: module where the flaw exists;\n remediation_desc: description of remediation needed for attack vector;\n severity_desc: description of severity of flaw;\n\n | Sca:\n cve: CVE (Common Vulnerabilities and Exposures);\n version: third-party component version;\n product_id: product ID containing the vulnerability;\n component_id: unique ID for the component;\n component_path(s): The list of component paths containing this vulnerability;\n component_filename: component filename;\n licenses: Displays all licenses found for a component with the specified risk rating;\n metadata: Displays metadata values, such as SCA scan mode and dependency mode;\n language: coding language;\n\n",
+          "properties": {}
+        },
+        "finding_status": {
+          "$ref": "#/definitions/FindingStatus"
+        },
+        "grace_period_expires_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date on which a grace period expires for the finding. Veracode calculates this date based on the last date a finding was opened (First Found or Last Reopened date), and based on the grace period provided in the security policy assigned to the application. This date only applies to findings that impact policy compliance. The date/time format is per RFC3339 and ISO-8601, and the timezone is UTC. Example: 2019-04-12T23:20:50.52Z."
+        },
+        "issue_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique ID within the context of this application."
+        },
+        "scan_type": {
+          "type": "string",
+          "description": "The type of scan that Veracode used to discover this finding: static, dynamic, manual, SCA.",
+          "enum": [
+            "STATIC",
+            "DYNAMIC",
+            "MANUAL",
+            "SCA"
+          ]
+        },
+        "violates_policy": {
+          "type": "boolean",
+          "description": "Policy is violated or not."
+        }
+      },
+      "title": "Finding"
+    },
+    "FindingStatus": {
+      "type": "object",
+      "properties": {
+        "first_found_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the finding was first found. The date/time format is per RFC3339 and ISO-8601, and the timezone is UTC. Example: 2019-04-12T23:20:50.52Z."
+        },
+        "last_seen_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time when the finding was last seen. The date/time format is per RFC3339 and ISO-8601, and the timezone is UTC. Example: 2019-04-12T23:20:50.52Z."
+        },
+        "mitigation_review_status": {
+          "type": "string",
+          "description": "Field indicating if the mitigation applied to the finding conforms to or deviates from industry standards."
+        },
+        "new": {
+          "type": "boolean",
+          "description": "Use this flag to indicate if this is the first time this finding appeared in any context of the latest scan."
+        },
+        "resolution": {
+          "type": "string",
+          "description": "Resolution of the finding."
+        },
+        "resolution_status": {
+          "type": "string",
+          "description": "The resolution status of the finding."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the finding: open or closed."
+        }
+      },
+      "title": "FindingStatus",
+      "description": "The status of a finding with a specific context."
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "deprecation": {
+          "type": "string",
+          "xml": {
+            "name": "deprecation",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "href": {
+          "type": "string",
+          "xml": {
+            "name": "href",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "hreflang": {
+          "type": "string",
+          "xml": {
+            "name": "hreflang",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "media": {
+          "type": "string",
+          "xml": {
+            "name": "media",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "rel": {
+          "type": "string",
+          "xml": {
+            "name": "rel",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "templated": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string",
+          "xml": {
+            "name": "title",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "type": {
+          "type": "string",
+          "xml": {
+            "name": "type",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Link"
+    },
+    "PageMetadata": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "number",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "size",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total_elements": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "total_elements",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total_pages": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "total_pages",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "PageMetadata"
+    },
+    "PagedResourceOfCategory": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "$ref": "#/definitions/EmbeddedCategory"
+        },
+        "_link": {
+          "$ref": "#/definitions/Link"
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      },
+      "title": "PagedResourceOfCategory"
+    },
+    "PagedResourceOfCwe": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "$ref": "#/definitions/EmbeddedCwe"
+        },
+        "_link": {
+          "$ref": "#/definitions/Link"
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      },
+      "title": "PagedResourceOfCwe"
+    },
+    "PagedResourceOfFinding": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "$ref": "#/definitions/EmbeddedFinding"
+        },
+        "_link": {
+          "$ref": "#/definitions/Link"
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      },
+      "title": "PagedResourceOfFinding"
+    }
+  }
+}

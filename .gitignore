@@ -1,0 +1,5 @@
+﻿**/.vs
+**/bin
+**/obj
+**/*.suo
+**/code-model-v1
