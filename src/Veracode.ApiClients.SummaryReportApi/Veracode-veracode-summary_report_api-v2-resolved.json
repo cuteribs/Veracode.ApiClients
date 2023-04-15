@@ -1,0 +1,925 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Veracode Summary Report API",
+    "description": "Veracode Summary Report API Documentation",
+    "version": "v2"
+  },
+  "servers": [
+    {
+      "url": "https://api.veracode.com/",
+      "description": "Veracode Global Region (default)"
+    },
+    {
+      "url": "https://api.veracode.eu/",
+      "description": "Veracode European Region"
+    },
+    {
+      "url": "https://api.veracode.us/",
+      "description": "Veracode US Federal Region"
+    }
+  ],
+  "paths": {
+    "/appsec/v2/applications/{app_guid}/summary_report": {
+      "get": {
+        "tags": [
+            "Summary Report"
+        ],
+        "operationId": "getSummaryReport",
+        "summary": "Returns a Summary Report of a scan.",
+        "description": "Returns a Summary Report of a static analysis, dynamic analysis or manual penetration test.",
+        "parameters": [
+          {
+            "name": "app_guid",
+            "in": "path",
+            "description": "GUID of the application.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+			  "type": "string"
+            }
+          },
+          {
+            "name": "build_id",
+            "in": "query",
+            "description": "ID of the build in which the scan ran. Default is the latest build_id.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+			  "items": {
+				  "type": "string"
+			  }
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "description": "GUID of the associated development sandbox, if specified. The Summary Report is relative to this context parameter.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+			  "items": {
+				  "type": "string"
+			  }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Link": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "$ref": "#/components/schemas/Link_self"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message.",
+            "readOnly": true
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code.",
+            "readOnly": true
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Error__links"
+          }
+        }
+      },
+      "SummaryReport": {
+        "type": "object",
+        "properties": {
+          "static_analysis": {
+            "$ref": "#/components/schemas/AnalysisType"
+          },
+          "dynamic_analysis": {
+            "$ref": "#/components/schemas/AnalysisType"
+          },
+          "manual_analysis": {
+            "$ref": "#/components/schemas/ManualAnalysisType"
+          },
+          "severity": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SeverityType"
+            }
+          },
+          "flaw_status": {
+            "$ref": "#/components/schemas/FlawStatusType"
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/CustomFieldsType"
+          },
+          "software_composition_analysis": {
+            "$ref": "#/components/schemas/SoftwareCompositionAnalysis"
+          },
+          "report_format_version": {
+            "type": "string",
+            "description": "Version of the format of this report."
+          },
+          "account_id": {
+            "type": "number",
+            "description": "ID of the Veracode account."
+          },
+          "app_name": {
+            "type": "string",
+            "description": "Name of the scanned application."
+          },
+          "app_id": {
+            "type": "number",
+            "description": "ID of the scanned application."
+          },
+          "analysis_id": {
+            "type": "number",
+            "description": "ID for the scan."
+          },
+          "static_analysis_unit_id": {
+            "type": "number",
+            "description": "Unit ID for a static analysis."
+          },
+          "sandbox_name": {
+            "type": "string",
+            "description": "Name of the development sandbox. Not applicable for a policy scan."
+          },
+          "sandbox_id": {
+            "type": "number",
+            "description": "ID of the development sandbox. Not applicable for a policy scan."
+          },
+          "first_build_submitted_date": {
+            "type": "string",
+            "description": "Timestamp of the first time you submitted a build of this application to Veracode for scanning."
+          },
+          "version": {
+            "type": "string",
+            "description": "Version label for the application."
+          },
+          "build_id": {
+            "type": "number",
+            "description": "ID of the build for the application."
+          },
+          "vendor": {
+            "type": "string",
+            "description": "Name of the vendor that provided the application, if applicable."
+          },
+          "submitter": {
+            "type": "string",
+            "description": "Name of the account or user that created the build."
+          },
+          "platform": {
+            "type": "string",
+            "description": "Platform of the build for the application."
+          },
+          "business_criticality": {
+            "type": "integer",
+            "description": "Business criticality for the application.",
+            "format": "int64"
+          },
+          "generation_date": {
+            "type": "string",
+            "description": "Timestamp when Veracode generated the report."
+          },
+          "veracode_level": {
+            "type": "string",
+            "description": "Security score for the application based on Veracode Levels. Values are VL1, VL2, VL3, VL4, or VL5"
+          },
+          "total_flaws": {
+            "type": "integer",
+            "description": "Total number of discovered findings for the application.",
+            "format": "int64"
+          },
+          "flaws_not_mitigated": {
+            "type": "integer",
+            "description": "Total number of discovered findings not marked as mitigated.",
+            "format": "int64"
+          },
+          "teams": {
+            "type": "string",
+            "description": "Teams assigned to this application."
+          },
+          "life_cycle_stage": {
+            "type": "string",
+            "description": "Current life cycle stage for this application. For example, deployed or in development."
+          },
+          "planned_deployment_date": {
+            "type": "string",
+            "description": "Deployment date for the application, if specified."
+          },
+          "last_update_time": {
+            "type": "string",
+            "description": "Last time this application was modified."
+          },
+          "is_latest_build": {
+            "type": "boolean",
+            "description": "True if this report is for the most recent build of this application."
+          },
+          "policy_name": {
+            "type": "string",
+            "description": "Name of the security policy assigned to this application."
+          },
+          "policy_version": {
+            "type": "integer",
+            "description": "Version number of the security policy assigned to the version of this application.",
+            "format": "int64"
+          },
+          "policy_compliance_status": {
+            "type": "string",
+            "description": "Current policy compliance status for this application. Values are Calculating, Did Not Pass, Conditional Pass, or Pass."
+          },
+          "policy_rules_status": {
+            "type": "string",
+            "description": "Current policy rules compliance status for this application. Does not include scan frequency requirements and grace period time allowed to address rule violations. Values are Calculating, Did Not Pass, or Pass."
+          },
+          "grace_period_expired": {
+            "type": "boolean",
+            "description": "True if findings in the latest analyzed build of this application have existed for longer than the allowed grace period."
+          },
+          "scan_overdue": {
+            "type": "string",
+            "description": "True if the amount of time between the last analysis and the current time is greater than the scan frequency that your security policy requires."
+          },
+          "any_type_scan_due": {
+            "type": "string",
+            "description": "Date to analyze a new build of this application for it to remain in compliance with the required scan frequency of the security policy."
+          },
+          "business_owner": {
+            "type": "string",
+            "description": "First and last name of the party responsible for this application."
+          },
+          "business_unit": {
+            "type": "string",
+            "description": "Department or group associated with this application."
+          },
+          "tags": {
+            "type": "string",
+            "description": "Comma-delimited list of tags associated with this application."
+          },
+          "legacy_scan_engine": {
+            "type": "boolean",
+            "description": "For a static analysis, indicates whether the scan ran with a legacy engine or the same engine version as the previous scan of its type."
+          }
+        },
+        "description": "Details about the Summary Report."
+      },
+      "AnalysisType": {
+        "type": "object",
+        "properties": {
+          "modules": {
+            "$ref": "#/components/schemas/Module"
+          },
+          "rating": {
+            "type": "string",
+            "description": "Letter grade for the security of this application."
+          },
+          "score": {
+            "type": "integer",
+            "description": "Numeric security score for this application.",
+            "format": "int64"
+          },
+          "mitigated_rating": {
+            "type": "string",
+            "description": "Letter grade for the security of this application, based on mitigated findings."
+          },
+          "mitigated_score": {
+            "type": "integer",
+            "description": "Numeric security score for this application, based on mitigated findings.",
+            "format": "int64"
+          },
+          "submitted_date": {
+            "type": "string",
+            "description": "Date when you submitted this application to Veracode for analysis."
+          },
+          "published_date": {
+            "type": "string",
+            "description": "Date when Veracode published the analysis for this application."
+          },
+          "next_scan_due": {
+            "type": "string",
+            "description": "Date when the active security policy for this application is scheduled to request the next scan."
+          },
+          "analysis_size_bytes": {
+            "type": "number",
+            "description": "Optional. For a static analysis, the size, in bytes, of the scanned modules."
+          },
+          "engine_version": {
+            "type": "string",
+            "description": "For a static analysis, the version of the engine that Veracode used for this scan."
+          },
+          "dynamic_scan_type": {
+            "$ref": "#/components/schemas/DynamicScanType"
+          },
+          "scan_exit_status_id": {
+            "type": "integer",
+            "description": "Optional. For a dynamic analysis, the numeric code for scan exit status.",
+            "format": "int64"
+          },
+          "scan_exit_status_desc": {
+            "type": "string",
+            "description": "Optional. For a dynamic analysis, a description for scan_exit_status_id."
+          },
+          "version": {
+            "type": "string",
+            "description": "Optional. Version of the scan."
+          }
+        },
+        "description": "For a static analysis, a list of modules with one module node per module analyzed. For a dynamic analysis, a single module node."
+      },
+      "DynamicScanType": {
+        "type": "string",
+        "description": "Optional. For a dynamic analysis, indicates whether the scan is DA (Dynamic Analysis), MP (DynamicMP), or DS (DynamicDS).",
+        "enum": [
+          "MP",
+          "DS",
+          "DA"
+        ]
+      },
+      "ManualAnalysisType": {
+        "type": "object",
+        "properties": {
+          "cia_adjustment": {
+            "type": "integer",
+            "description": "For Manual Penetration Testing, the CIA triad that Veracode applied to the security score.",
+            "format": "int64"
+          },
+          "delivery_consultant": {
+            "type": "array",
+            "description": "For Manual Penetration Testing, the names of the delivery consultants, if any.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "modules": {
+            "$ref": "#/components/schemas/Module"
+          },
+          "rating": {
+            "type": "string",
+            "description": "Letter grade for the security of this application."
+          },
+          "score": {
+            "type": "integer",
+            "description": "Numeric score for the security of this application.",
+            "format": "int64"
+          },
+          "next_scan_due": {
+            "type": "string",
+            "description": "Date when the active security policy for this application is scheduled to request the next scan."
+          }
+        },
+        "description": "For Manual Penetration Testing, Veracode applies the confidentiality, integrity, and availability (CIA) triad to generate the final numeric score for the application. The report lists the delivery consultants, if any, followed by scan results."
+      },
+      "Module": {
+        "type": "object",
+        "properties": {
+          "module": {
+            "type": "array",
+            "description": "Module Type array",
+            "items": {
+              "$ref": "#/components/schemas/ModuleType"
+            }
+          }
+        },
+        "description": "Module"
+      },
+      "ModuleType": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the scanned module. For a dynamic analysis, the name is blank."
+          },
+          "compiler": {
+            "type": "string",
+            "description": "Compiler that compiled the scanned module. For a dynamic analysis, the value is blank."
+          },
+          "os": {
+            "type": "string",
+            "description": "Operating system for which the scanned module is targetted. For a dynamic analysis, the value is blank."
+          },
+          "architecture": {
+            "type": "string",
+            "description": "Target architecture for which the scanned module is targeted. For a dynamic analysis, the value is blank."
+          },
+          "loc": {
+            "type": "integer",
+            "description": "Lines of codes. For a dynamic analysis or non-debug modules, the value is blank.",
+            "format": "int64"
+          },
+          "score": {
+            "type": "integer",
+            "description": "Module-specific security score, which contributes toward the analysis scores for the application.",
+            "format": "int64"
+          },
+          "numflawssev0": {
+            "type": "integer",
+            "description": "Number of severity-0 findings. These findings are the lowest severity and are usually informational only.",
+            "format": "int64"
+          },
+          "numflawssev1": {
+            "type": "integer",
+            "description": "Number of severity-1 findings.",
+            "format": "int64"
+          },
+          "numflawssev2": {
+            "type": "integer",
+            "description": "Number of severity-2 findings.",
+            "format": "int64"
+          },
+          "numflawssev3": {
+            "type": "integer",
+            "description": "Number of severity-3 findings.",
+            "format": "int64"
+          },
+          "numflawssev4": {
+            "type": "integer",
+            "description": "Number of severity-4 findings.",
+            "format": "int64"
+          },
+          "numflawssev5": {
+            "type": "integer",
+            "description": "Number of severity-5 findings. These findings are the highest severity and Veracode recommends that you fix them immediately.",
+            "format": "int64"
+          },
+          "target_url": {
+            "type": "string",
+            "description": "For a dynamic analysis, the URL for the application you scanned."
+          },
+          "domain": {
+            "type": "string",
+            "description": "For a dynamic analysis, the domain for the application you scanned."
+          }
+        },
+        "description": "Information about the type of module that Veracode scanned."
+      },
+      "CustomFieldsType": {
+        "type": "object",
+        "properties": {
+          "customfield": {
+            "type": "array",
+            "description": "List of custom field types associated with the scanned application.",
+            "items": {
+              "$ref": "#/components/schemas/CustomFieldType"
+            }
+          }
+        },
+        "description": "Information about the custom field types associated with the scanned application."
+      },
+      "CustomFieldType": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the custom field."
+          },
+          "value": {
+            "type": "string",
+            "description": "Value for the custom field."
+          }
+        },
+        "description": "Name-value pair of account-specific custom fields and their values."
+      },
+      "FlawStatusType": {
+        "type": "object",
+        "properties": {
+          "_new": {
+            "type": "integer",
+            "description": "Number of findings discovered during the first build of this application.",
+            "format": "int64"
+          },
+          "reopen": {
+            "type": "integer",
+            "description": "Number of findings discovered in a prior build of this application that were not new, but Veracode discovered them in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "open": {
+            "type": "integer",
+            "description": "Number of findings discovered in this build that Veracode also discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "fixed": {
+            "type": "integer",
+            "description": "Number of findings discovered in the prior build that Veracode did not discover in the current build. For a dyanamic analysis, Veracode verifies the findings as fixed.",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of findings discovered in this build.",
+            "format": "int64"
+          },
+          "not_mitigated": {
+            "type": "integer",
+            "description": "Total number of findings discovered in this build that are not mitigated.",
+            "format": "int64"
+          },
+          "sev1_change": {
+            "type": "integer",
+            "description": "Number of severity-1 findings discovered in this build, minus the number of severity-1 findings discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "sev2_change": {
+            "type": "integer",
+            "description": "Number of severity-2 findings discvoered in this build, minus the number of severity-2 findings discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "sev3_change": {
+            "type": "integer",
+            "description": "Number of severity-3 findings discvoered in this build, minus the number of severity-3 findings discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "sev4_change": {
+            "type": "integer",
+            "description": "Number of severity-4 findings discvoered in this build, minus the number of severity-4 findings discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "sev5_change": {
+            "type": "integer",
+            "description": "Number of severity-5 findings discvoered in this build, minus the number of severity-5 findings discovered in the build immediately prior to this build.",
+            "format": "int64"
+          },
+          "conforms_to_guidelines": {
+            "type": "integer",
+            "description": "Number of mitigations that adhere to your risk tolerance guidelines based on Veracode review.",
+            "format": "int64"
+          },
+          "deviates_from_guidelines": {
+            "type": "integer",
+            "description": "Number of mitigations that either do not provide enough information or do not adhere to your the risk tolerance guidelines, based on Veracode review.",
+            "format": "int64"
+          },
+          "total_reviewed_mitigations": {
+            "type": "integer",
+            "description": "Total number of mitigations that Veracode reviewed. The value may not add up to the total number of all proposed or accepted   mitigations.",
+            "format": "int64"
+          }
+        },
+        "description": "Information about the status of discovered findings."
+      },
+      "SeverityType": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "array",
+            "description": "Category of findings with one per category for which there is at least one finding.",
+            "items": {
+              "$ref": "#/components/schemas/CategoryType"
+            }
+          },
+          "level": {
+            "type": "integer",
+            "description": "Veracode Level for the severity of the finding. The value range is 0 to 5, with 5 being the highest severity.",
+            "format": "int32"
+          }
+        },
+        "description": "Information about the Veracode Levels for the severity of a finding. The range is 0 through 5, where 0 is informational and 5 is the most severe."
+      },
+      "CategoryType": {
+        "type": "object",
+        "properties": {
+          "category_name": {
+            "type": "string",
+            "description": "Name of the severity category."
+          },
+          "severity": {
+            "$ref": "#/components/schemas/SeverityEnum"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of findings in this category.",
+            "format": "int64"
+          }
+        },
+        "description": "Category Type"
+      },
+      "SeverityEnum": {
+        "type": "string",
+        "description": "Severity enum",
+        "enum": [
+          "Informational",
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ]
+      },
+      "SoftwareCompositionAnalysis": {
+        "type": "object",
+        "properties": {
+          "vulnerable_components": {
+            "$ref": "#/components/schemas/VulnerableComponentList"
+          },
+          "third_party_components": {
+            "type": "integer",
+            "description": "Number of vulnerable third party components.",
+            "format": "int64"
+          },
+          "violate_policy": {
+            "type": "boolean",
+            "description": "Whether the component violates the security policy."
+          },
+          "components_violated_policy": {
+            "type": "integer",
+            "description": "Number of components that violate the SCA policy.",
+            "format": "int64"
+          },
+          "blacklisted_components": {
+            "type": "integer",
+            "description": "Number of blacklisted components.",
+            "format": "int64"
+          },
+          "sca_service_available": {
+            "type": "boolean",
+            "description": "True if the SCA service is available, else set to false."
+          }
+        },
+        "description": "Information about findings discovered during Software Composition Analysis (SCA)."
+      },
+      "VulnerableComponentList": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Component"
+            }
+          }
+        },
+        "description": "Details about the vulnerable components."
+      },
+      "Component": {
+        "type": "object",
+        "properties": {
+          "file_paths": {
+            "$ref": "#/components/schemas/FilePathList"
+          },
+          "licenses": {
+            "$ref": "#/components/schemas/LicenseList"
+          },
+          "vulnerabilities": {
+            "$ref": "#/components/schemas/VulnerabilityList"
+          },
+          "violated_policy_rules": {
+            "$ref": "#/components/schemas/ViolatedRuleList"
+          },
+          "component_id": {
+            "type": "string",
+            "description": "ID of the component."
+          },
+          "file_name": {
+            "type": "string",
+            "description": "Filename of the component."
+          },
+          "sha1": {
+            "type": "string",
+            "description": "sha1"
+          },
+          "vulnerability": {
+            "type": "integer",
+            "description": "Number of vulnerabilities that Veracode discovered in the component.",
+            "format": "int64"
+          },
+          "max_cvss_score": {
+            "type": "string",
+            "description": "Max Common Vulnerability Scoring System (CVSS) of the component. See cvss_score."
+          },
+          "library": {
+            "type": "string",
+            "description": "Library name of the component."
+          },
+          "version": {
+            "type": "string",
+            "description": "Version of the component."
+          },
+          "vendor": {
+            "type": "string",
+            "description": "Vendor name of the component."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the component."
+          },
+          "blacklisted": {
+            "type": "string",
+            "description": "Blacklisted status for the component."
+          },
+          "_new": {
+            "type": "string",
+            "description": "Whether this is a newly-added component."
+          },
+          "added_date": {
+            "type": "string",
+            "description": "Date when you added the component."
+          },
+          "component_affects_policy_compliance": {
+            "type": "string",
+            "description": "Whether the component violates the SCA policy."
+          }
+        },
+        "description": "Component"
+      },
+      "FilePathList": {
+        "type": "object",
+        "properties": {
+          "filePath": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilePath"
+            }
+          }
+        },
+        "description": "Filepaths for the component."
+      },
+      "FilePath": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Filepath for the component."
+          }
+        },
+        "description": "Filepath for the component."
+      },
+      "LicenseList": {
+        "type": "object",
+        "properties": {
+          "license": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/License"
+            }
+          }
+        },
+        "description": "License details for the component."
+      },
+      "License": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of this license."
+          },
+          "spdx_id": {
+            "type": "string",
+            "description": "Classification for the license from the Software Package Data Exchange (SPDX) license list."
+          },
+          "license_url": {
+            "type": "string",
+            "description": "URL for this license."
+          },
+          "risk_rating": {
+            "type": "string",
+            "description": "Risk associated with the use of this license."
+          }
+        },
+        "description": "Component license."
+      },
+      "VulnerabilityList": {
+        "type": "object",
+        "properties": {
+          "vulnerability": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vulnerability"
+            }
+          }
+        },
+        "description": "Vulnerabilities of the component."
+      },
+      "Vulnerability": {
+        "type": "object",
+        "properties": {
+          "cve_id": {
+            "type": "string",
+            "description": "Common Vulnerabilities and Exposures (CVE) ID of the vulnerability."
+          },
+          "cvss_score": {
+            "type": "number",
+            "description": "Common Vulnerability Scoring System (CVSS) score. Measures the level of complexity for the vulnerability. The value is a range of 0 to 10 with 10 representing the highest complexity."
+          },
+          "severity": {
+            "type": "integer",
+            "description": "Veracode Level for the severity of the vulnerability. The value range is 0 to 5, with 5 being the highest severity.",
+            "format": "int64"
+          },
+          "cwe_id": {
+            "type": "string",
+            "description": "Common Weakness Enumration (CWE) ID for the vulnerability."
+          },
+          "first_found_date": {
+            "type": "string",
+            "description": "Date when Veracode first discovered the vulnerability."
+          },
+          "cve_summary": {
+            "type": "string",
+            "description": "CVE summary for the vulnerability."
+          },
+          "severity_desc": {
+            "type": "string",
+            "description": "Severity description for the vulnerbseverity."
+          },
+          "mitigation": {
+            "type": "string",
+            "description": "Vulnerability mitigation status."
+          },
+          "mitigation_type": {
+            "type": "string",
+            "description": "Type of mitigation applied to the vulnerability, if any."
+          },
+          "mitigated_date": {
+            "type": "string",
+            "description": "Mitigation date for teh vulnerability."
+          },
+          "vulnerability_affects_policy_compliance": {
+            "type": "string",
+            "description": "Whether the vulnerability affects SCA policy compliance."
+          }
+        },
+        "description": "Vulnerability"
+      },
+      "ViolatedRuleList": {
+        "type": "object",
+        "properties": {
+          "policy_rule": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyRule"
+            }
+          }
+        },
+        "description": "Details about SCA policy rules for the component."
+      },
+      "PolicyRule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PolicyRuleType"
+          },
+          "value": {
+            "type": "string",
+            "description": "SCA policy type."
+          },
+          "desc": {
+            "type": "string",
+            "description": "SCA policy description."
+          }
+        },
+        "description": "Name of the SCA policy rule."
+      },
+      "PolicyRuleType": {
+        "type": "string",
+        "description": "PolicyRuleType enum",
+        "enum": [
+          "DISALLOW_VULNERABILITIES_BY_SEVERITY",
+          "DISALLOW_CVSS_SCORE",
+          "DISALLOW_COMPONENT_BLACKLIST",
+          "DISALLOW_COMPONENT_BY_LICENSE_RISK"
+        ]
+      },
+      "Link_self": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "Endpoint for the current request."
+          }
+        }
+      },
+      "Error__links": {
+        "required": [
+          "help"
+        ],
+        "type": "object",
+        "properties": {
+          "help": {
+            "$ref": "#/components/schemas/Link"
+          }
+        },
+        "readOnly": true
+      }
+    }
+  }
+}

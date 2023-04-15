@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>40d4c3dd-1286-4dad-afd8-2d1de12ef270</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veracode.ApiClients.ApplicationsApi\Veracode.ApiClients.ApplicationsApi.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.DynamicFlawApi\Veracode.ApiClients.DynamicFlawApi.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.FindingsApi\Veracode.ApiClients.FindingsApi.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.Helper\Veracode.ApiClients.Helper.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.SCAAgentApi\Veracode.ApiClients.SCAAgentApi.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.SummaryReportApi\Veracode.ApiClients.SummaryReportApi.csproj" />
+  </ItemGroup>
+
+</Project>
