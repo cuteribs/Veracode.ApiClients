@@ -1,13 +1,13 @@
-name: Publish to nuget.org
+name: _publish.yml
 
 on:
   workflow_call:
     inputs:
-      project-name:
+      PROJECT_NAME:
         required: true
         type: string
     secrets:
-      nuget-token:
+      NUGET_TOKEN:
         required: true
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       env:
         NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
       run: |
-        cd src/${{project-name}}
+        cd src/${{ inputs.PROJECT_NAME }}
         dotnet restore
         dotnet pack -c release --no-restore -o dist
         dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
