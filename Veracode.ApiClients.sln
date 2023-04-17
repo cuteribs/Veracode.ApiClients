@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.Finding
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.DynamicFlawApi", "src\Veracode.ApiClients.DynamicFlawApi\Veracode.ApiClients.DynamicFlawApi.csproj", "{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.IdentityApi", "src\Veracode.ApiClients.IdentityApi\Veracode.ApiClients.IdentityApi.csproj", "{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
