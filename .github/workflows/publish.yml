@@ -1,0 +1,33 @@
+name: Publish to nuget.org
+
+on:
+  workflow_call:
+    inputs:
+      PROJECT_NAME:
+        required: true
+        type: string
+    secrets:
+      NUGET_TOKEN:
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+
+    - name: Build & Publish
+      env:
+        NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+      run: |
+        cd ${{PROJECT_NAME}}
+        dotnet restore
+        dotnet pack -c release --no-restore -o dist
+        dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
