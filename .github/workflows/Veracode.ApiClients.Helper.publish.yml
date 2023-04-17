@@ -1,0 +1,19 @@
+name: Veracode.ApiClients.Helper.publish.yml
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.Helper/*"]
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.Helper/*"]
+  workflow_dispatch:
+
+jobs:
+  call-to-publish:
+    uses: ./.github/workflows/_publish.yml
+    with:
+      PROJECT_NAME: Veracode.ApiClients.Helper
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

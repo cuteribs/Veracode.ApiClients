@@ -16,15 +16,24 @@ class Program
 
 	static void Main(string[] args)
 	{
+		/*
+		Imagine your have a secrets.json like this:
+		{
+			"VeracodeClientOptions": {
+				"ApiId": "blablablablabla",
+				"ApiKey": "fooobaaafooobaaa"
+			}
+		}
+		*/
 		Configuration = new ConfigurationBuilder()
 			.AddUserSecrets<Program>()
 			.Build();
 
 		GetUsers();
 
-		//GetApplications();
+		GetApplications();
 
-		//GetSCAs();
+		GetSCAs();
 	}
 
 	static void GetUsers()
