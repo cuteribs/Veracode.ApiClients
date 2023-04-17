@@ -1,3 +1,5 @@
+name: Veracode.ApiClients.ApplicationsApi.publish.yml
+
 on:
   push:
     branches: [main]
@@ -12,6 +14,6 @@ jobs:
   call-to-publish:
     uses: ./.github/workflows/_publish.yml
     with:
-      project-name: Veracode.ApiClients.ApplicationsApi
+      PROJECT_NAME: Veracode.ApiClients.ApplicationsApi
     secrets:
-      nuget-token: ${{ secrets.NUGET_TOKEN }}
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
