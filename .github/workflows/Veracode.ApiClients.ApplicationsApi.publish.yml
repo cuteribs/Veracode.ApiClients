@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-to-publish:
-    uses: .github/workflows/_publish.yml
+    uses: ./.github/workflows/_publish.yml
     with:
       project-name: Veracode.ApiClients.ApplicationsApi
     secrets:
