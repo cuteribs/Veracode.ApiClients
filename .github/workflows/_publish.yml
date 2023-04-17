@@ -3,11 +3,11 @@ name: Publish to nuget.org
 on:
   workflow_call:
     inputs:
-      PROJECT_NAME:
+      project-name:
         required: true
         type: string
     secrets:
-      NUGET_TOKEN:
+      nuget-token:
         required: true
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       env:
         NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
       run: |
-        cd ${{PROJECT_NAME}}
+        cd src/${{project-name}}
         dotnet restore
         dotnet pack -c release --no-restore -o dist
         dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
