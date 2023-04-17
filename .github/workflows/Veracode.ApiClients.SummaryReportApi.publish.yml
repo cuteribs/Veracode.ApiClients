@@ -1,0 +1,19 @@
+name: Veracode.ApiClients.SummaryReportApi.publish.yml
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.SummaryReportApi/*"]
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.SummaryReportApi/*"]
+  workflow_dispatch:
+
+jobs:
+  call-to-publish:
+    uses: ./.github/workflows/_publish.yml
+    with:
+      PROJECT_NAME: Veracode.ApiClients.SummaryReportApi
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

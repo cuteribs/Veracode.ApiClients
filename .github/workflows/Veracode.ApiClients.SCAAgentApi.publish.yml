@@ -1,0 +1,19 @@
+name: Veracode.ApiClients.SCAAgentApi.publish.yml
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.SCAAgentApi/*"]
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.SCAAgentApi/*"]
+  workflow_dispatch:
+
+jobs:
+  call-to-publish:
+    uses: ./.github/workflows/_publish.yml
+    with:
+      PROJECT_NAME: Veracode.ApiClients.SCAAgentApi
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

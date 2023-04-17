@@ -1,0 +1,19 @@
+name: Veracode.ApiClients.IdentityApi.publish.yml
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.IdentityApi/*"]
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.IdentityApi/*"]
+  workflow_dispatch:
+
+jobs:
+  call-to-publish:
+    uses: ./.github/workflows/_publish.yml
+    with:
+      PROJECT_NAME: Veracode.ApiClients.IdentityApi
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

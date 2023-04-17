@@ -1,0 +1,19 @@
+name: Veracode.ApiClients.FindingsApi.publish.yml
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.FindingsApi/*"]
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths: ["src/Veracode.ApiClients.FindingsApi/*"]
+  workflow_dispatch:
+
+jobs:
+  call-to-publish:
+    uses: ./.github/workflows/_publish.yml
+    with:
+      PROJECT_NAME: Veracode.ApiClients.FindingsApi
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
