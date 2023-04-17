@@ -32,7 +32,7 @@ public static class ServiceClientServiceCollectionExtensions
 		services.AddTransient<TClient>(factory);
 		return services;
 
-		DelegatingHandler createHandler(IServiceProvider serviceProvider) => new ApiClientHandler(clientOptions);
+		DelegatingHandler createHandler() => new ApiClientHandler(clientOptions);
 
 		TClient factory(IServiceProvider serviceProvider)
 		{

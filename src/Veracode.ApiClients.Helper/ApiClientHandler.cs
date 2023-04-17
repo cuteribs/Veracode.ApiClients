@@ -43,22 +43,15 @@ public class ApiClientHandler : DelegatingHandler
 		string httpMethod
 	)
 	{
-		try
-		{
-			var url = path + (queryString ?? string.Empty);
-			var data = $"id={apiId}&host={hostName}&url={url}&method={httpMethod}";
-			var ts = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds.ToString("F0");
-			var apiKeyBytes = Convert.FromHexString(apiKey);
-			var nonceBytes = RandomNumberGenerator.GetBytes(16);
-			var sign = GenerateSignature(apiKeyBytes, nonceBytes, ts, data);
+		var url = path + (queryString ?? string.Empty);
+		var data = $"id={apiId}&host={hostName}&url={url}&method={httpMethod}";
+		var ts = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds.ToString("F0");
+		var apiKeyBytes = Convert.FromHexString(apiKey);
+		var nonceBytes = RandomNumberGenerator.GetBytes(16);
+		var sign = GenerateSignature(apiKeyBytes, nonceBytes, ts, data);
 
-			var authorization = $"id={apiId},ts={ts:F0},nonce={Convert.ToHexString(nonceBytes)},sig={Convert.ToHexString(sign)}";
-			return authorization;
-		}
-		catch (Exception e)
-		{
-			throw new Exception(e.Message, e);
-		}
+		var authorization = $"id={apiId},ts={ts:F0},nonce={Convert.ToHexString(nonceBytes)},sig={Convert.ToHexString(sign)}";
+		return authorization;
 	}
 
 	private static byte[] GenerateSignature(byte[] apiKeyBytes, byte[] nonceBytes, string ts, string data)

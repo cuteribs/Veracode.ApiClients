@@ -3,15 +3,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Veracode.ApiClients.Applications.Api;
 using Veracode.ApiClients.Helper;
+using Veracode.ApiClients.IdentityApi;
 using Veracode.ApiClients.SCAAgent.Api;
 using Veracode.ApiClients.SCAAgent.Api.Patches;
 using Veracode.ApiClients.SummaryReportApi;
 
 namespace ApiTester;
 
-internal class Program
+class Program
 {
-	private static IConfigurationRoot Configuration;
+	private static IConfigurationRoot? Configuration;
 
 	static void Main(string[] args)
 	{
@@ -19,9 +20,28 @@ internal class Program
 			.AddUserSecrets<Program>()
 			.Build();
 
-		GetApplications();
+		GetUsers();
 
-		GetSCAs();
+		//GetApplications();
+
+		//GetSCAs();
+	}
+
+	static void GetUsers()
+	{
+		ServiceCollection services = new();
+		services.AddApiClient<IIdentityApiClient, IdentityApiClient>(o =>
+		{
+			Configuration.Bind("VeracodeClientOptions", o);
+			o.BaseUri = new("https://api.veracode.com/api/authn");
+		});
+		var serviceProvider = services.BuildServiceProvider();
+		var client = serviceProvider.GetRequiredService<IIdentityApiClient>();
+
+		var response = client.GetUserApiCredsUsingGET();
+		var result = response;
+		Console.WriteLine("Users");
+		Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 	}
 
 	static void GetApplications()

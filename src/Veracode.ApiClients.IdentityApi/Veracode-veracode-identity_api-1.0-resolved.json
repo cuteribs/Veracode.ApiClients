@@ -1,0 +1,3227 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Veracode Identity API Documentation\n\nUse one of the following base URLs depending on the region for your account:\n* https://api.veracode.com/ - Veracode US Region (default)\n* https://api.veracode.eu/ - Veracode European Region\n* https://api.veracode.us/ - Veracode US Federal Region",
+    "version": "1.0",
+    "title": "Veracode Identity API.",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "api.veracode.com",
+  "basePath": "/api/authn",
+  "tags": [
+    {
+      "name": "user",
+      "description": "User APIs"
+    },
+    {
+      "name": "api-credentials",
+      "description": "API Credentials APIs"
+    },
+    {
+      "name": "team",
+      "description": "Team APIs"
+    },
+    {
+      "name": "business-unit",
+      "description": "Business Unit APIs"
+    },
+    {
+      "name": "role",
+      "description": "Role APIs"
+    }
+  ],
+  "paths": {
+    "/v2/api_credentials": {
+      "get": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Get API credentials for self.",
+        "description": "Get API credentials for self based on the user principal.",
+        "operationId": "getUserApiCredsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Generate API credentials.",
+        "description": "Generate API credentials.",
+        "operationId": "generateApiCredsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentials"
+            }
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentials"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentials"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Delete API credentials for self.",
+        "description": "Delete API credentials based on the user principal.",
+        "operationId": "revokeUserApiCredsUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/api_credentials/{apiCredsId}": {
+      "get": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Get specific API credentials.",
+        "description": "Get specific API credentials based on path parameters.",
+        "operationId": "getApiCredsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "apiCredsId",
+            "in": "path",
+            "description": "The API ID for the client.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfApiCredentialsWithoutSecret"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Delete specific API credentials.",
+        "description": "Delete specific API credentials based on path parameters.",
+        "operationId": "revokeApiCredsUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "apiCredsId",
+            "in": "path",
+            "description": "The API ID for the client.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/api_credentials/user_id/{userId}": {
+      "get": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Get specific API credentials by userId.",
+        "description": "As an Administrator user, get specific API credentials based on userId.",
+        "operationId": "getApiCredsByUserId",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Generate API credentials by userId",
+        "description": "As an Administrator user, generate API credentials based on userId",
+        "operationId": "generateApiCredsByUserId",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully generated the API credentials."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "api-credentials"
+        ],
+        "summary": "Delete specific API credentials by userId.",
+        "description": "As an Administrator user, delete specific API credentials based on userId.",
+        "operationId": "revokeApiCredsByUserId",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/business_units": {
+      "get": {
+        "tags": [
+          "business-unit"
+        ],
+        "summary": "Get a list of business units.",
+        "description": "Gets a list of business units based on the user principal.",
+        "operationId": "getBusinessUnitsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bu_name",
+            "in": "query",
+            "description": "The business unit name.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfBusinessUnit"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a business unit.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfBusinessUnit"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfBusinessUnit"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "business-unit"
+        ],
+        "summary": "Create a business unit.",
+        "description": "Creates a business unit and returns the record with the ID.",
+        "operationId": "createBusinessUnitUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "businessUnit",
+            "description": "businessUnit",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessUnit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a business unit.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          }
+        }
+      }
+    },
+    "/v2/business_units/{businessUnitId}": {
+      "get": {
+        "tags": [
+          "business-unit"
+        ],
+        "summary": "Get a specific business unit.",
+        "description": "Get the specific business unit details for the ID provided as a path variable.",
+        "operationId": "getBusinessUnitUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "businessUnitId",
+            "in": "path",
+            "description": "The business unit ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a business unit.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "business-unit"
+        ],
+        "summary": "Update a business unit.",
+        "description": "Updates the business unit for the ID provided as a path variable. Parameters excluded from the request are set to null (if allowed in the database) unless partial is set to true.",
+        "operationId": "updateBusinessUnitUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "businessUnitId",
+            "in": "path",
+            "description": "The business unit ID.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "businessUnit",
+            "description": "businessUnit",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessUnit"
+            }
+          },
+          {
+            "name": "partial",
+            "in": "query",
+            "description": "Flag to indicate if this is a partial update.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "incremental",
+            "in": "query",
+            "description": "Flag to indicate if this is an incremental update.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a business unit.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfBusinessUnitResource"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "business-unit"
+        ],
+        "summary": "Delete a specific business unit.",
+        "description": "Deletes the specific business unit for the ID provided as a path variable.",
+        "operationId": "deleteBusinessUnitUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "businessUnitId",
+            "in": "path",
+            "description": "The business unit ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully created a business unit."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/teams": {
+      "get": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Get the list of teams for an organization.",
+        "description": "Gets a list of all the teams in the database for the specified organization.",
+        "operationId": "getTeamsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfTeamSummary"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a team.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfTeamSummary"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfTeamSummary"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Create a team.",
+        "description": "Creates a team and returns the details and ID.",
+        "operationId": "createTeamUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "team",
+            "description": "team",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a team.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          }
+        }
+      }
+    },
+    "/v2/teams/{teamId}": {
+      "get": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Get a single team.",
+        "description": "Gets details of the specific team ID provided as a path variable.",
+        "operationId": "getTeamUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "The team ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a team.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Update a single team.",
+        "description": "Updates a specific team and sets nulls to fields not in the request (if the database allows it) unless partial is set to true.",
+        "operationId": "updateTeamUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "The team ID.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "team",
+            "description": "team",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          },
+          {
+            "name": "partial",
+            "in": "query",
+            "description": "Flag to indicate if this is a partial update.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "incremental",
+            "in": "query",
+            "description": "Flag to indicate if this is an incremental update.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a team.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfTeamResource"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Delete a single team.",
+        "description": "Deletes a specific team provided as a path variable.",
+        "operationId": "deleteTeamUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "The team ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully created a team."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get the list of users for an organization.",
+        "description": "Gets a list of the organization users for external users. Internal users can specify a specific organization.",
+        "operationId": "getUsersUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_name",
+            "in": "query",
+            "description": "The usernames to filter out from the results.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "org_name",
+            "in": "query",
+            "description": "The organization name to search under.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "description": "The organization ID to search under.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "deleted",
+            "in": "query",
+            "description": "Flag to indicate if deleted records are included in the results.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "inactive",
+            "in": "query",
+            "description": "Flag to indicate if inactive users are included in the results.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfUserSummary"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Create a user.",
+        "description": "Creates a user and returns details with the ID.",
+        "operationId": "createUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "generate_api_creds",
+            "in": "query",
+            "description": "Set to true to indicate that API credentials must be generated for the user.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          }
+        }
+      }
+    },
+    "/v2/users/self": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get details of the current user.",
+        "description": "Gets details of the current user using the details from the principal user.",
+        "operationId": "getUserUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update the current user.",
+        "description": "Updates the current user (from the principal user) and sets nulls to fields not in the request (if the database allows it) unless partial is set to true.",
+        "operationId": "updateUserUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "partial",
+            "in": "query",
+            "description": "Flag to indicate if this is a partial update.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "incremental",
+            "in": "query",
+            "description": "Flag to indicate if this is an incremental update.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          }
+        }
+      }
+    },
+    "/v2/users/{userId}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get a single user.",
+        "description": "Gets details of the specific user ID provided as a path variable.",
+        "operationId": "getUserUsingGET_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update a single user.",
+        "description": "Updates a specific user and sets nulls to fields not in the request (if the database allows it) unless partial is set to true.",
+        "operationId": "updateUserUsingPUT_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "partial",
+            "in": "query",
+            "description": "Flag to indicate if this is a partial update.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "incremental",
+            "in": "query",
+            "description": "Flag to indicate if this is an incremental update.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/ResourceOfUserResource"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Delete a single user.",
+        "description": "Deletes a specific user provided as a path variable.",
+        "operationId": "deleteUserUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request."
+          },
+          "201": {
+            "description": "You have successfully created a user."
+          },
+          "204": {
+            "description": "Success. No response required."
+          }
+        }
+      }
+    },
+    "/v2/users/search": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get a list of users for an organization by search and filter.",
+        "description": "Get a list of users in an organization based on search terms and filters. Internal users can specify an organization name.",
+        "operationId": "getUsersBySearchUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_id",
+            "in": "query",
+            "description": "Search for users by Veracode API ID.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "login_enabled",
+            "in": "query",
+            "description": "Set to true to filter users by login enabled status: enabled or disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "login_status",
+            "in": "query",
+            "description": "Set to true to filter users by status of their user account: active, failed, locked, or never",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "description": "ID of an organization in which to search for users.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "org_name",
+            "in": "query",
+            "description": "Name of an organization in which to search for users. Available to internal users only.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "role_id",
+            "in": "query",
+            "description": "Filter users by ID of the assigned user role.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "saml_user",
+            "in": "query",
+            "description": "Set to true to filter by SAML users.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "search_term",
+            "in": "query",
+            "description": "Keyword to search for users using the username, first name, last name, and email address fields.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "team_id",
+            "in": "query",
+            "description": "Filter users by the ID of the team of which they are a member.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user_type",
+            "in": "query",
+            "description": "Filter users by user account type: api, for API service account, or user, for human user account.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfUser"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a user.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfUser"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfUser"
+            }
+          }
+        }
+      }
+    },
+    "/v2/roles": {
+      "get": {
+        "tags": [
+          "role"
+        ],
+        "summary": "Get the list of roles for an organization.",
+        "description": "Get a list of all user roles for an organization.",
+        "operationId": "getRolesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "You have successfully submitted your request.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfRole"
+            }
+          },
+          "201": {
+            "description": "You have successfully created a role.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfRole"
+            }
+          },
+          "204": {
+            "description": "Success. No response required.",
+            "schema": {
+              "$ref": "#/definitions/PagedResourcesOfResourceOfRole"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiCredentials": {
+      "type": "object",
+      "properties": {
+        "api_id": {
+          "type": "string",
+          "description": "The unique ID for the client."
+        },
+        "api_secret": {
+          "type": "string",
+          "description": "The client secret key."
+        },
+        "expiration_ts": {
+          "type": "string",
+          "description": "The expiration date for the API crendetials."
+        },
+        "revocation_ts": {
+          "type": "string",
+          "description": "The timestamp when the user credentials were revoked."
+        },
+        "revocation_user": {
+          "type": "string",
+          "description": "The admin user who revoked the credentials."
+        }
+      },
+      "description": "The API credentials for a client."
+    },
+    "BusinessUnit": {
+      "type": "object",
+      "properties": {
+        "bu_id": {
+          "type": "string",
+          "description": "The business unit ID in the Veracode Identity API."
+        },
+        "bu_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The business unit ID in the Veracode database."
+        },
+        "bu_name": {
+          "type": "string",
+          "description": "The business unit name."
+        },
+        "is_default": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this is the default business unit for the organization."
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        }
+      },
+      "description": "A single business unit."
+    },
+    "BusinessUnitResource": {
+      "type": "object",
+      "properties": {
+        "bu_id": {
+          "type": "string"
+        },
+        "bu_name": {
+          "type": "string"
+        },
+        "is_default": {
+          "type": "boolean"
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfTeam"
+          }
+        }
+      }
+    },
+    "Feature": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this feature is currently active."
+        },
+        "feature_description": {
+          "type": "string",
+          "description": "The short description for this feature."
+        },
+        "feature_id": {
+          "type": "string",
+          "description": "The feature ID in the Veracode Identity API."
+        },
+        "feature_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The feature ID in the Veracode database."
+        },
+        "feature_name": {
+          "type": "string",
+          "description": "The feature name."
+        },
+        "overrideable": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this feature is overrideable."
+        }
+      },
+      "description": "A single feature."
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "deprecation": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "hreflang": {
+          "type": "string"
+        },
+        "media": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "api_credential_ttl": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The expiration time (integer) for the API credentials."
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization is soft deleted."
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feature"
+          }
+        },
+        "internal": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization is internal or external."
+        },
+        "login_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if login is enabled for this organization."
+        },
+        "okta_group_id": {
+          "type": "string",
+          "description": "The group ID assinged to this organization in Okta."
+        },
+        "org_id": {
+          "type": "string",
+          "description": "The organization ID in the Veracode Identity API."
+        },
+        "org_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The organization ID in the Veracode database."
+        },
+        "org_name": {
+          "type": "string",
+          "description": "The organization name."
+        },
+        "org_status": {
+          "type": "string",
+          "description": "Enum indicating the status of this organization.",
+          "enum": [
+            "VALID",
+            "PENDING_APPROVAL"
+          ]
+        },
+        "org_type": {
+          "type": "string",
+          "description": "Enum indicating the type of this organization.",
+          "enum": [
+            "ROOT",
+            "OTHER",
+            "PARTNER",
+            "ENTERPRISE",
+            "VENDOR",
+            "TRIAL",
+            "FREE_TRIAL",
+            "OPENSOURCE"
+          ]
+        },
+        "sales_lead_email": {
+          "type": "string",
+          "description": "The email address of the Veracode account manager."
+        },
+        "sales_lead_name": {
+          "type": "string",
+          "description": "The name of the Veracode account manager."
+        },
+        "saml_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if SAML is enabled for this organization."
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationSku"
+          }
+        },
+        "solutions_architect_email": {
+          "type": "string",
+          "description": "The email address of the Veracode solutions architect."
+        },
+        "solutions_architect_name": {
+          "type": "string",
+          "description": "The name of the Veracode solutions architect."
+        },
+        "use_okta": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization is enabled for Okta."
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "vendor_contact_email": {
+          "type": "string",
+          "description": "The email address of the vendor contact for this organization."
+        },
+        "vendor_contact_job_title": {
+          "type": "string",
+          "description": "The job title of the vendor contact for this organization."
+        },
+        "vendor_contact_name": {
+          "type": "string",
+          "description": "The name of the customer contact."
+        },
+        "vendor_display_name": {
+          "type": "string",
+          "description": "The display name of the customer contact."
+        },
+        "vendor_type": {
+          "type": "string",
+          "description": "Enum for the customer type.",
+          "enum": [
+            "NOTSPEC",
+            "SERVICES_ALL",
+            "ENT_INTEGRATION",
+            "ISV",
+            "SERVICES_CLOUD",
+            "SERVICES_DEPLOYED",
+            "CONSULTING"
+          ]
+        }
+      },
+      "description": "A single organization."
+    },
+    "OrganizationSku": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization SKU is currently active."
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization SKU is soft deleted."
+        },
+        "flex_licensing": {
+          "type": "number",
+          "format": "double",
+          "description": "The flex licensing parameter."
+        },
+        "org_sku_id": {
+          "type": "string",
+          "description": "The organization SKU ID in the Veracode Identity API."
+        },
+        "org_sku_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The organization SKU ID in the Veracode database."
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "organization_name": {
+          "type": "string",
+          "description": "The organization name."
+        },
+        "sku": {
+          "$ref": "#/definitions/Sku"
+        },
+        "sku_end": {
+          "type": "string",
+          "description": "The expiration date (in date format) of the organization SKU."
+        },
+        "sku_name": {
+          "type": "string",
+          "description": "The organization SKU name."
+        },
+        "sku_start": {
+          "type": "string",
+          "description": "The expiration start date (in date format) of the organization SKU."
+        },
+        "units_purchased": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The numbers of SKUs purchased."
+        }
+      },
+      "description": "The relationship between a single SKU and an organization."
+    },
+    "PageMetadata": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total_elements": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total_pages": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfBusinessUnit": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfBusinessUnitSummary": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfTeam": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfRole": {
+      "type": "object",
+      "properties": {
+        "embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfTeamSummary": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfUser": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "PagedResourcesOfResourceOfUserSummary": {
+      "type": "object",
+      "properties": {
+        "_embedded": {
+          "type": "object",
+          "properties": {}
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "page": {
+          "$ref": "#/definitions/PageMetadata"
+        }
+      }
+    },
+    "Permission": {
+      "type": "object",
+      "properties": {
+        "permission_description": {
+          "type": "string",
+          "description": "The short description for this permission."
+        },
+        "permission_id": {
+          "type": "string",
+          "description": "The permission ID in the Veracode Identity API."
+        },
+        "permission_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The permission ID in the Veracode database."
+        },
+        "permission_name": {
+          "type": "string",
+          "description": "The permission name."
+        },
+        "permission_types": {
+          "type": "array",
+          "description": "The permission-types that apply to this permission. This parameter is specific to the Veracode Identity API",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A single permission."
+    },
+    "ResourceOfApiCredentials": {
+      "type": "object",
+      "properties": {
+        "api_id": {
+          "type": "string",
+          "description": "The unique ID for the client."
+        },
+        "api_secret": {
+          "type": "string",
+          "description": "The client secret key."
+        },
+        "expiration_ts": {
+          "type": "string",
+          "description": "The expiration date for the API credentials."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "revocation_ts": {
+          "type": "string",
+          "description": "The timestamp when the user credentials were revoked."
+        },
+        "revocation_user": {
+          "type": "string",
+          "description": "The admin user who revoked the credentials."
+        }
+      }
+    },
+    "ResourceOfApiCredentialsWithoutSecret": {
+      "type": "object",
+      "properties": {
+        "api_id": {
+          "type": "string",
+          "description": "The unique ID for the client."
+        },
+        "expiration_ts": {
+          "type": "string",
+          "description": "The expiration date for the API credentials."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "revocation_ts": {
+          "type": "string",
+          "description": "The timestamp when the user credentials were revoked."
+        },
+        "revocation_user": {
+          "type": "string",
+          "description": "The admin user who revoked the credentials."
+        }
+      }
+    },
+    "ResourceOfBusinessUnitResource": {
+      "type": "object",
+      "properties": {
+        "bu_id": {
+          "type": "string"
+        },
+        "bu_name": {
+          "type": "string"
+        },
+        "is_default": {
+          "type": "boolean"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfTeam"
+          }
+        }
+      }
+    },
+    "ResourceOfBusinessUnit": {
+      "type": "object",
+      "properties": {
+        "bu_id": {
+          "type": "string",
+          "description": "The business unit ID in the Veracode Identity API."
+        },
+        "bu_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The business unit ID in the Veracode database."
+        },
+        "bu_name": {
+          "type": "string",
+          "description": "The business unit name."
+        },
+        "is_default": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this is the default business unit for the organization."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganizationSummary"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfTeamResourceSummary"
+          }
+        }
+      }
+    },
+    "ResourceOfBusinessUnitSummary": {
+      "type": "object",
+      "properties": {
+        "bu_id": {
+          "type": "string",
+          "description": "The business unit ID in the Veracode Identity API."
+        },
+        "bu_name": {
+          "type": "string",
+          "description": "The business unit name."
+        }
+      }
+    },
+    "ResourceOfOrganizationSummary": {
+      "type": "object",
+      "properties": {
+        "org_id": {
+          "type": "string",
+          "description": "The organization ID in the Veracode Identity API."
+        },
+        "org_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The organization ID in the Veracode database."
+        },
+        "org_name": {
+          "type": "string",
+          "description": "The organization name."
+        }
+      }
+    },
+    "ResourceOfFeature": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this feature is currently active."
+        },
+        "feature_description": {
+          "type": "string",
+          "description": "The short description for this feature."
+        },
+        "feature_id": {
+          "type": "string",
+          "description": "The feature ID in the Veracode Identity API."
+        },
+        "feature_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The feature ID in the Veracode database."
+        },
+        "feature_name": {
+          "type": "string",
+          "description": "The feature name."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "overrideable": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this feature is overrideable."
+        }
+      }
+    },
+    "ResourceOfOrganization": {
+      "type": "object",
+      "properties": {
+        "api_credential_ttl": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The expiration time (integer) for the API credentials."
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization is soft deleted."
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feature"
+          }
+        },
+        "internal": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating whether this organization is internal or external."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "login_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if login is enabled for this organization."
+        },
+        "okta_group_id": {
+          "type": "string",
+          "description": "The group ID assinged to this organization in Okta."
+        },
+        "org_id": {
+          "type": "string",
+          "description": "The organization ID in the Veracode Identity API."
+        },
+        "org_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The organization ID in the Veracode database."
+        },
+        "org_name": {
+          "type": "string",
+          "description": "The organization name."
+        },
+        "org_status": {
+          "type": "string",
+          "description": "Enum indicating the status of this organization.",
+          "enum": [
+            "VALID",
+            "PENDING_APPROVAL"
+          ]
+        },
+        "org_type": {
+          "type": "string",
+          "description": "Enum indicating the type of this organization.",
+          "enum": [
+            "ROOT",
+            "OTHER",
+            "PARTNER",
+            "ENTERPRISE",
+            "VENDOR",
+            "TRIAL",
+            "FREE_TRIAL",
+            "OPENSOURCE"
+          ]
+        },
+        "sales_lead_email": {
+          "type": "string",
+          "description": "The email address of the Veracode account manager."
+        },
+        "sales_lead_name": {
+          "type": "string",
+          "description": "The name of the Veracode account manager."
+        },
+        "saml_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if SAML is enabled for this organization."
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationSku"
+          }
+        },
+        "solutions_architect_email": {
+          "type": "string",
+          "description": "The email address of the Veracode solutions architect."
+        },
+        "solutions_architect_name": {
+          "type": "string",
+          "description": "The name of the Veracode solutions architect."
+        },
+        "use_okta": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this organization is enabled for Okta."
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "vendor_contact_email": {
+          "type": "string",
+          "description": "The email address of the vendor contact for this organization."
+        },
+        "vendor_contact_job_title": {
+          "type": "string",
+          "description": "The job title of the vendor contact for this organization."
+        },
+        "vendor_contact_name": {
+          "type": "string",
+          "description": "The name of the customer contact."
+        },
+        "vendor_display_name": {
+          "type": "string",
+          "description": "The display name of the customer contact."
+        },
+        "vendor_type": {
+          "type": "string",
+          "description": "Enum for the customer type.",
+          "enum": [
+            "NOTSPEC",
+            "SERVICES_ALL",
+            "ENT_INTEGRATION",
+            "ISV",
+            "SERVICES_CLOUD",
+            "SERVICES_DEPLOYED",
+            "CONSULTING"
+          ]
+        }
+      }
+    },
+    "ResourceOfPermission": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "permission_description": {
+          "type": "string",
+          "description": "The short description for this permission."
+        },
+        "permission_id": {
+          "type": "string",
+          "description": "The permission ID in the Veracode Identity API."
+        },
+        "permission_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The permission ID in the Veracode database."
+        },
+        "permission_name": {
+          "type": "string",
+          "description": "The permission name."
+        },
+        "permission_types": {
+          "type": "array",
+          "description": "The permission-types that apply to this permission. This parameter is specific to the Veracode Identity API",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResourceOfRole": {
+      "type": "object",
+      "properties": {
+        "assigned_to_proxy_users": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this role can be assigned to proxy users."
+        },
+        "is_internal": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating whether this role is internal or external."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Permission"
+          }
+        },
+        "requires_token": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this role requires a token to log in."
+        },
+        "role_description": {
+          "type": "string",
+          "description": "The short description for this role."
+        },
+        "role_id": {
+          "type": "string",
+          "description": "The role ID in the Veracode Identity API."
+        },
+        "role_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The role ID in the Veracode database."
+        },
+        "role_name": {
+          "type": "string",
+          "description": "The role name."
+        },
+        "team_admin_manageable": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if a team admin can manage this role."
+        }
+      }
+    },
+    "ResourceOfTeamResource": {
+      "type": "object",
+      "properties": {
+        "business_unit": {
+          "$ref": "#/definitions/ResourceOfBusinessUnit"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfFeature"
+          }
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "team_id": {
+          "type": "string"
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "team_name": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfUserTeam"
+          }
+        }
+      }
+    },
+    "ResourceOfTeam": {
+      "type": "object",
+      "properties": {
+        "business_unit": {
+          "$ref": "#/definitions/BusinessUnit"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feature"
+          }
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "relationship": {
+          "type": "string",
+          "description": "Enum to indicate the relationship this user has with this team.",
+          "enum": [
+            "ADMIN",
+            "MEMBER"
+          ]
+        },
+        "team_id": {
+          "type": "string",
+          "description": "The team ID in the Veracode Identity API."
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID in the Veracode database."
+        },
+        "team_name": {
+          "type": "string",
+          "description": "The team name."
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserTeam"
+          }
+        }
+      }
+    },
+    "ResourceOfTeamResourceSummary": {
+      "type": "object",
+      "properties": {
+        "team_id": {
+          "type": "string"
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "team_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ResourceOfTeamSummary": {
+      "type": "object",
+      "properties": {
+        "team_id": {
+          "type": "string",
+          "description": "The team ID in the Veracode Identity API."
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID in the Veracode database."
+        },
+        "team_name": {
+          "type": "string",
+          "description": "The team name."
+        },
+        "relationship": {
+          "type": "string",
+          "description": "Enum to indicate the relationship this user has with this team.",
+          "enum": [
+            "ADMIN",
+            "MEMBER"
+          ]
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganizationSummary"
+        },
+        "business_unit": {
+          "$ref": "#/definitions/ResourceOfBusinessUnitSummary"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "ResourceOfUserResource": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "agree_terms": {
+          "type": "boolean"
+        },
+        "allow_multiple_sessions": {
+          "type": "boolean"
+        },
+        "allowed_ip_addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "api_credentials": {
+          "$ref": "#/definitions/ResourceOfApiCredentials"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "email_address": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "ip_restricted": {
+          "type": "boolean"
+        },
+        "last_host": {
+          "type": "string"
+        },
+        "last_login": {
+          "type": "string",
+          "example": "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "login_answer": {
+          "type": "string"
+        },
+        "login_enabled": {
+          "type": "boolean"
+        },
+        "login_failure_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "login_question": {
+          "type": "string"
+        },
+        "okta_user_id": {
+          "type": "string"
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "password": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfPermission"
+          }
+        },
+        "phone": {
+          "type": "string"
+        },
+        "pin_required": {
+          "type": "boolean"
+        },
+        "proxy_organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfOrganization"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfRole"
+          }
+        },
+        "saml_subject": {
+          "type": "string"
+        },
+        "saml_user": {
+          "type": "boolean"
+        },
+        "show_welcome": {
+          "type": "boolean"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfUserTeam"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "user_type": {
+          "type": "string",
+          "enum": [
+            "VOSP",
+            "NO_VOSP"
+          ]
+        }
+      }
+    },
+    "ResourceOfUserSummaryResource": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "type": "boolean"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ResourceOfUserTeam": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "relationship": {
+          "type": "string",
+          "description": "Enum to indicate the relationship this user has with this team.",
+          "enum": [
+            "ADMIN",
+            "MEMBER"
+          ]
+        },
+        "team_id": {
+          "type": "string",
+          "description": "The team ID in the Veracode Identity API."
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The team ID in the Veracode database."
+        },
+        "team_name": {
+          "type": "string",
+          "description": "The team name."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The user ID in the Veracode database."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username of the user."
+        }
+      }
+    },
+    "ResourceOfUser": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user record is currently active."
+        },
+        "agree_terms": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if the user has accepted the Veracode terms and conditions."
+        },
+        "allow_multiple_sessions": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user is allowed to have multiple active sessions."
+        },
+        "allowed_ip_addresses": {
+          "type": "array",
+          "description": "Property to indicate the allowed IP addresses from which this user can log in.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "api_credentials": {
+          "$ref": "#/definitions/ApiCredentials"
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user was soft deleted."
+        },
+        "email_address": {
+          "type": "string",
+          "description": "The email address of this user."
+        },
+        "first_name": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "ip_restricted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating whether this user can only log in from a specified set of IPs."
+        },
+        "last_host": {
+          "type": "string",
+          "description": "The last host used by the user to log in."
+        },
+        "last_login": {
+          "type": "string",
+          "description": "The last login time for the user in date format."
+        },
+        "last_name": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {}
+        },
+        "login_answer": {
+          "type": "string",
+          "description": "The security answer associated with this user account."
+        },
+        "login_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if login is enabled for this user."
+        },
+        "login_failure_count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Property to indicate the count of failed logins this user has accumulated."
+        },
+        "login_question": {
+          "type": "string",
+          "description": "The security question associated with this user account."
+        },
+        "new_password": {
+          "type": "string",
+          "description": "The new password for this user account (used while updating the account)."
+        },
+        "okta_user_id": {
+          "type": "string",
+          "description": "The user ID in Okta."
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password for this user account."
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Permission"
+          }
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the user."
+        },
+        "pin_required": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user must provide a PIN to log in."
+        },
+        "proxy_organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Organization"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        },
+        "saml_subject": {
+          "type": "string",
+          "description": "Property for passing the SAML subject from the user."
+        },
+        "saml_user": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user is a SAML user."
+        },
+        "show_welcome": {
+          "type": "boolean",
+          "example": false,
+          "description": " Flag to indicate showing the welcome message upon login."
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserTeam"
+          }
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of this user."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The user ID in the Veracode database."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username for this user."
+        },
+        "user_type": {
+          "type": "string",
+          "description": "Enum indicating the user type.",
+          "enum": [
+            "VOSP",
+            "NO_VOSP"
+          ]
+        }
+      }
+    },
+    "ResourceOfUserSummary": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user was soft deleted."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username for this user."
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "assigned_to_proxy_users": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this role can be assigned to proxy users."
+        },
+        "is_internal": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this role is internal or external."
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Permission"
+          }
+        },
+        "requires_token": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this role requires a token to log in."
+        },
+        "role_description": {
+          "type": "string",
+          "description": "The short description for this role."
+        },
+        "role_id": {
+          "type": "string",
+          "description": "The role ID in the Veracode Identity API."
+        },
+        "role_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The role ID in the Veracode database."
+        },
+        "role_name": {
+          "type": "string",
+          "description": "The role name."
+        },
+        "team_admin_manageable": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if a team admin can manage this role."
+        }
+      },
+      "description": "A single role."
+    },
+    "Sku": {
+      "type": "object",
+      "properties": {
+        "default_units_purchased": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of deafult units of this SKU that can be purchased."
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this SKU was soft deleted."
+        },
+        "discontinued": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this SKU is discontinued."
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feature"
+          }
+        },
+        "publish_type": {
+          "type": "string",
+          "description": "Enum indicating the publish type of this SKU.",
+          "enum": [
+            "PLATFORM",
+            "GREENLIGHT"
+          ]
+        },
+        "sku_analysis_type": {
+          "type": "string",
+          "description": "Enum indicating the SKU analysis type of this SKU.",
+          "enum": [
+            "STATIC",
+            "DYNAMIC",
+            "STATIC_AND_DYNAMIC",
+            "NOT_APPLICABLE",
+            "DYNAMIC_ANALYSIS"
+          ]
+        },
+        "sku_description": {
+          "type": "string",
+          "description": "The short description for this SKU."
+        },
+        "sku_id": {
+          "type": "string",
+          "description": "The SKU ID in the Veracode Identity API."
+        },
+        "sku_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The SKU ID in the Veracode database."
+        },
+        "sku_name": {
+          "type": "string",
+          "description": "The SKU name."
+        },
+        "sku_type": {
+          "type": "string",
+          "description": "Enum indicating the SKU type of this SKU.",
+          "enum": [
+            "SDLC",
+            "COTS_ENTERPRISE",
+            "ELEARNING",
+            "APPLICATION",
+            "CSM",
+            "DISCOVERY",
+            "DYNAMICMP",
+            "SCA",
+            "DYN_APP",
+            "DYN_SCANS",
+            "DYN_SCANNER",
+            "SC_ACCEL_NEXTDAY",
+            "SC_SCA",
+            "SCA_AND_SC",
+            "SCA_UNIFIED",
+            "CSM_MPT",
+            "GENERIC"
+          ]
+        }
+      },
+      "description": "A single SKU."
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "business_unit": {
+          "$ref": "#/definitions/BusinessUnit"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feature"
+          }
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "relationship": {
+          "type": "string",
+          "description": "Enum to indicate the relationship this user has with this team.",
+          "enum": [
+            "ADMIN",
+            "MEMBER"
+          ]
+        },
+        "team_id": {
+          "type": "string",
+          "description": "The team ID in the Veracode Identity API."
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID in the Veracode database."
+        },
+        "team_name": {
+          "type": "string",
+          "description": "The team name."
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserTeam"
+          }
+        }
+      },
+      "description": "A single team."
+    },
+    "TeamResource": {
+      "type": "object",
+      "properties": {
+        "business_unit": {
+          "$ref": "#/definitions/ResourceOfBusinessUnit"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfFeature"
+          }
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "team_id": {
+          "type": "string"
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "team_name": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfUserTeam"
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user record is currently active."
+        },
+        "agree_terms": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if the user has accepted the Veracode terms and conditions."
+        },
+        "allow_multiple_sessions": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user is allowed to have multiple active sessions."
+        },
+        "allowed_ip_addresses": {
+          "type": "array",
+          "description": "Property to indicate the allowed IP addresses from which this user can log in.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "api_credentials": {
+          "$ref": "#/definitions/ApiCredentials"
+        },
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user was soft deleted."
+        },
+        "email_address": {
+          "type": "string",
+          "description": "The email address of this user."
+        },
+        "first_name": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "ip_restricted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating whether this user can only log in from a specified set of IPs."
+        },
+        "last_host": {
+          "type": "string",
+          "description": "The last host used by the user to log in."
+        },
+        "last_login": {
+          "type": "string",
+          "description": "The last login time for the user in date format."
+        },
+        "last_name": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "login_answer": {
+          "type": "string",
+          "description": "The security answer associated with this user account."
+        },
+        "login_enabled": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if login is enabled for this user."
+        },
+        "login_failure_count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Property to indicate the count of failed logins this user has accumulated."
+        },
+        "login_question": {
+          "type": "string",
+          "description": "The security question associated with this user account."
+        },
+        "new_password": {
+          "type": "string",
+          "description": "The new password for this user account (used while updating the account)."
+        },
+        "okta_user_id": {
+          "type": "string",
+          "description": "The user ID in Okta."
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password for this user account."
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Permission"
+          }
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the user."
+        },
+        "pin_required": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user must provide a PIN to log in."
+        },
+        "proxy_organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Organization"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        },
+        "saml_subject": {
+          "type": "string",
+          "description": "Property for passing the SAML subject from the user."
+        },
+        "saml_user": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user is a SAML user."
+        },
+        "show_welcome": {
+          "type": "boolean",
+          "example": false,
+          "description": " Flag to indicate showing the welcome message upon login."
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserTeam"
+          }
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of this user."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The user ID in the Veracode database."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username for this user."
+        }
+      },
+      "description": "A single user account."
+    },
+    "UserSummary": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "type": "boolean",
+          "example": false,
+          "description": "Flag indicating if this user was soft deleted."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username for this user."
+        }
+      },
+      "description": "A single user account."
+    },
+    "UserResource": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "agree_terms": {
+          "type": "boolean"
+        },
+        "allow_multiple_sessions": {
+          "type": "boolean"
+        },
+        "allowed_ip_addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "api_credentials": {
+          "$ref": "#/definitions/ResourceOfApiCredentials"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "email_address": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "ip_restricted": {
+          "type": "boolean"
+        },
+        "last_host": {
+          "type": "string"
+        },
+        "last_login": {
+          "type": "string",
+          "example": "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "login_answer": {
+          "type": "string"
+        },
+        "login_enabled": {
+          "type": "boolean"
+        },
+        "login_failure_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "login_question": {
+          "type": "string"
+        },
+        "okta_user_id": {
+          "type": "string"
+        },
+        "organization": {
+          "$ref": "#/definitions/ResourceOfOrganization"
+        },
+        "password": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfPermission"
+          }
+        },
+        "phone": {
+          "type": "string"
+        },
+        "pin_required": {
+          "type": "boolean"
+        },
+        "proxy_organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfOrganization"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfRole"
+          }
+        },
+        "saml_subject": {
+          "type": "string"
+        },
+        "saml_user": {
+          "type": "boolean"
+        },
+        "show_welcome": {
+          "type": "boolean"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceOfUserTeam"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "user_type": {
+          "type": "string",
+          "enum": [
+            "VOSP",
+            "NO_VOSP"
+          ]
+        }
+      }
+    },
+    "UserTeam": {
+      "type": "object",
+      "properties": {
+        "relationship": {
+          "type": "string",
+          "description": "Enum to indicate the relationship this user has with this team.",
+          "enum": [
+            "ADMIN",
+            "MEMBER"
+          ]
+        },
+        "team_id": {
+          "type": "string",
+          "description": "The team ID in the Veracode Identity API."
+        },
+        "team_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The team ID in the Veracode database."
+        },
+        "team_name": {
+          "type": "string",
+          "description": "The team name."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The user ID in the Veracode Identity API."
+        },
+        "user_legacy_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The user ID in the Veracode database."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "The username of the user."
+        }
+      },
+      "description": "A team-to-user relationship."
+    }
+  }
+}

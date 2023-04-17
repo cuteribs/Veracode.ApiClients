@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Veracode.ApiClients.DynamicFlawApi\Veracode.ApiClients.DynamicFlawApi.csproj" />
     <ProjectReference Include="..\Veracode.ApiClients.FindingsApi\Veracode.ApiClients.FindingsApi.csproj" />
     <ProjectReference Include="..\Veracode.ApiClients.Helper\Veracode.ApiClients.Helper.csproj" />
+    <ProjectReference Include="..\Veracode.ApiClients.IdentityApi\Veracode.ApiClients.IdentityApi.csproj" />
     <ProjectReference Include="..\Veracode.ApiClients.SCAAgentApi\Veracode.ApiClients.SCAAgentApi.csproj" />
     <ProjectReference Include="..\Veracode.ApiClients.SummaryReportApi\Veracode.ApiClients.SummaryReportApi.csproj" />
   </ItemGroup>

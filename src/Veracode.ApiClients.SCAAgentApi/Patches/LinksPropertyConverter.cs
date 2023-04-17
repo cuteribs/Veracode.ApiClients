@@ -11,8 +11,6 @@ public class LinksPropertyConverter : JsonConverter<IList<Link>>
 {
 	public override IList<Link>? ReadJson(JsonReader reader, Type objectType, IList<Link>? existingValue, bool hasExistingValue, JsonSerializer serializer)
 	{
-		var list = new List<Link>();
-
 		switch (reader.TokenType)
 		{
 			case JsonToken.StartArray:
@@ -27,7 +25,7 @@ public class LinksPropertyConverter : JsonConverter<IList<Link>>
 				}).ToList();
 		}
 
-		return null;
+		return default;
 	}
 
 	public override void WriteJson(JsonWriter writer, IList<Link>? value, JsonSerializer serializer)
