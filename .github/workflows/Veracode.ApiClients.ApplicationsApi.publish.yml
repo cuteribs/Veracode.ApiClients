@@ -10,9 +10,8 @@ on:
 
 jobs:
   call-to-publish:
-    uses: cuteribs/Veracode.ApiClients/.github/workflows/_publish.yml@main
+    uses: .github/workflows/_publish.yml
     with:
-      PROJECT_NAME: Veracode.ApiClients.ApplicationsApi
+      project-name: Veracode.ApiClients.ApplicationsApi
     secrets:
-      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-      
+      nuget-token: ${{ secrets.NUGET_TOKEN }}
