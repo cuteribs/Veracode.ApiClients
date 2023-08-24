@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Veracode.ApiClients.SCAAgent.Api.Patches
+namespace Veracode.ApiClients.SCAAgentApi.Patches
 {
 	public class EmbeddedPropertyConverter : JsonConverter
 	{

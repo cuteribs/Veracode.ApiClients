@@ -3,9 +3,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Veracode.ApiClients.SCAAgent.Api.Models;
+using Veracode.ApiClients.SCAAgentApi.Models;
 
-namespace Veracode.ApiClients.SCAAgent.Api.Patches;
+namespace Veracode.ApiClients.SCAAgentApi.Patches;
 
 public class LinksPropertyConverter : JsonConverter<IList<Link>>
 {
