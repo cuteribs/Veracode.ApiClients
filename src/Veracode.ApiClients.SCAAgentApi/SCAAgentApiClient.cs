@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api
+namespace Veracode.ApiClients.SCAAgentApi
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -29,7 +29,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
     /// * https://api.veracode.eu/srcclr - Veracode European Region
     /// * https://api.veracode.us/srcclr - Veracode US Federal Region
     /// </summary>
-    public partial class SCAAgentApiClient : ServiceClient<SCAAgentApiClient>, AutoRest.ApiClients.Common.IApiClient, ISCAAgentApiClient
+    public partial class SCAAgentApiClient : ServiceClient<SCAAgentApiClient>, ISCAAgentApiClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -52,20 +52,20 @@ namespace Veracode.ApiClients.SCAAgent.Api
         public virtual IGetTeamsUsingGET GetTeamsUsingGET { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeSCAAgentAPISpecification class.
+        /// Initializes a new instance of the SCAAgentApiClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling VeracodeSCAAgentAPISpecification.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling SCAAgentApiClient.Dispose(). False: will not dispose provided httpClient</param>
         public SCAAgentApiClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeSCAAgentAPISpecification class.
+        /// Initializes a new instance of the SCAAgentApiClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
@@ -76,7 +76,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeSCAAgentAPISpecification class.
+        /// Initializes a new instance of the SCAAgentApiClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -90,7 +90,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeSCAAgentAPISpecification class.
+        /// Initializes a new instance of the SCAAgentApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -111,7 +111,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeSCAAgentAPISpecification class.
+        /// Initializes a new instance of the SCAAgentApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -488,8 +488,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// </summary>
         /// <param name='id'>
         /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-        /// maven:net.minidev:json-smart:1.3.1:
+        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+        /// Example: maven:net.minidev:json-smart:1.3.1:
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -760,8 +760,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// </summary>
         /// <param name='id'>
         /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-        /// maven:net.minidev:json-smart:1.3.1:
+        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+        /// Example: maven:net.minidev:json-smart:1.3.1:
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4616,7 +4616,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<ResourcesAgentToken>> GetWorkspaceAgentTokensUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<ResourcesAgentTokenWithoutAccessToken>> GetWorkspaceAgentTokensUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -4694,7 +4694,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<ResourcesAgentToken>();
+            var _result = new HttpOperationResponse<ResourcesAgentTokenWithoutAccessToken>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -4703,7 +4703,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<ResourcesAgentToken>(_responseContent, DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<ResourcesAgentTokenWithoutAccessToken>(_responseContent, DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -4752,7 +4752,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<AgentToken>> GetWorkspaceAgentTokenUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AgentTokenWithoutAccessToken>> GetWorkspaceAgentTokenUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -4832,7 +4832,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<AgentToken>();
+            var _result = new HttpOperationResponse<AgentTokenWithoutAccessToken>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -4841,7 +4841,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<AgentToken>(_responseContent, DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<AgentTokenWithoutAccessToken>(_responseContent, DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -4975,6 +4975,134 @@ namespace Veracode.ApiClients.SCAAgent.Api
         }
 
         /// <summary>
+        /// getApplicationProjects
+        /// </summary>
+        /// <remarks>
+        /// Get application projects.
+        /// </remarks>
+        /// <param name='appGuid'>
+        /// Application GUID.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<LinkedProjects>> GetApplicationProjectsUsingGETWithHttpMessagesAsync(System.Guid appGuid, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("appGuid", appGuid);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "GetApplicationProjectsUsingGET", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v3/applications/{appGuid}/projects").ToString();
+            _url = _url.Replace("{appGuid}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(appGuid, SerializationSettings).Trim('"')));
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<LinkedProjects>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<LinkedProjects>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
         /// getSbomCyclonedx
         /// </summary>
         /// <param name='targetUuid'>
@@ -5087,7 +5215,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 401 && (int)_statusCode != 403 && (int)_statusCode != 404 && (int)_statusCode != 500)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 if (_httpResponse.Content != null) {
@@ -5251,7 +5379,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 401 && (int)_statusCode != 403 && (int)_statusCode != 404 && (int)_statusCode != 500)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 if (_httpResponse.Content != null) {

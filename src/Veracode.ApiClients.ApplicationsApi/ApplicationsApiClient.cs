@@ -4,12 +4,13 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.Applications.Api
+namespace Veracode.ApiClients.ApplicationsApi
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Models;
     using Newtonsoft.Json;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
@@ -25,7 +26,7 @@ namespace Veracode.ApiClients.Applications.Api
     /// * https://api.veracode.eu/ - Veracode European Region
     /// * https://api.veracode.us/ - Veracode US Federal Region
     /// </summary>
-    public partial class ApplicationsApiClient : ServiceClient<ApplicationsApiClient>, AutoRest.ApiClients.Common.IApiClient, IApplicationsApiClient
+    public partial class ApplicationsApiClient : ServiceClient<ApplicationsApiClient>, IApplicationsApiClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -43,20 +44,20 @@ namespace Veracode.ApiClients.Applications.Api
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeApplicationsAPISpecification class.
+        /// Initializes a new instance of the ApplicationsApiClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling VeracodeApplicationsAPISpecification.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling ApplicationsApiClient.Dispose(). False: will not dispose provided httpClient</param>
         public ApplicationsApiClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeApplicationsAPISpecification class.
+        /// Initializes a new instance of the ApplicationsApiClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
@@ -67,7 +68,7 @@ namespace Veracode.ApiClients.Applications.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeApplicationsAPISpecification class.
+        /// Initializes a new instance of the ApplicationsApiClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -81,7 +82,7 @@ namespace Veracode.ApiClients.Applications.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeApplicationsAPISpecification class.
+        /// Initializes a new instance of the ApplicationsApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -102,7 +103,7 @@ namespace Veracode.ApiClients.Applications.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the VeracodeApplicationsAPISpecification class.
+        /// Initializes a new instance of the ApplicationsApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.

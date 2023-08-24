@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
@@ -37,7 +37,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// Initializes a new instance of the Dependency class.
         /// </summary>
         /// <param name="refProperty">Reference</param>
-        /// <param name="dependsOn">Depends On</param>
+        /// <param name="dependsOn">The bom-ref identifiers of the components
+        /// that are dependencies of this dependency object.</param>
         public Dependency(string refProperty, IList<string> dependsOn = default(IList<string>))
         {
             RefProperty = refProperty;
@@ -60,12 +61,9 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         public string RefProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets depends On
+        /// Gets or sets the bom-ref identifiers of the components that are
+        /// dependencies of this dependency object.
         /// </summary>
-        /// <remarks>
-        /// The bom-ref identifiers of the components that are dependencies of
-        /// this dependency object.
-        /// </remarks>
         [JsonProperty(PropertyName = "dependsOn")]
         public IList<string> DependsOn { get; set; }
 
@@ -80,13 +78,6 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
             if (RefProperty == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "RefProperty");
-            }
-            if (DependsOn != null)
-            {
-                if (DependsOn.Count != System.Linq.Enumerable.Count(System.Linq.Enumerable.Distinct(DependsOn)))
-                {
-                    throw new ValidationException(ValidationRules.UniqueItems, "DependsOn");
-                }
             }
         }
     }

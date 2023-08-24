@@ -1,0 +1,12 @@
+﻿<Project>
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoRest.ApiClients.Common" Version="1.0.2" />
+	</ItemGroup>
+
+</Project>

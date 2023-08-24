@@ -1,0 +1,7 @@
+﻿input-file: ../src/Veracode.ApiClients.IdentityApi/Veracode-veracode-identity_api-1.0-resolved.json
+output-folder: ../src/Veracode.ApiClients.IdentityApi/
+clear-output-folder: false
+csharp: true
+legacy: true
+namespace: Veracode.ApiClients.IdentityApi
+override-client-name: IdentityApiClient

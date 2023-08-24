@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -28,9 +28,10 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the Tool class.
         /// </summary>
-        /// <param name="vendor">Tool Vendor</param>
-        /// <param name="name">Tool Name</param>
-        /// <param name="version">Version</param>
+        /// <param name="vendor">The name of the vendor who created the
+        /// tool.</param>
+        /// <param name="name">The name of the tool.</param>
+        /// <param name="version">The version of the tool.</param>
         public Tool(string vendor = default(string), string name = default(string), string version = default(string))
         {
             Vendor = vendor;
@@ -45,29 +46,20 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets tool Vendor
+        /// Gets or sets the name of the vendor who created the tool.
         /// </summary>
-        /// <remarks>
-        /// The name of the vendor who created the tool.
-        /// </remarks>
         [JsonProperty(PropertyName = "vendor")]
         public string Vendor { get; set; }
 
         /// <summary>
-        /// Gets or sets tool Name
+        /// Gets or sets the name of the tool.
         /// </summary>
-        /// <remarks>
-        /// The name of the tool.
-        /// </remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets version
+        /// Gets or sets the version of the tool.
         /// </summary>
-        /// <remarks>
-        /// The version of the tool.
-        /// </remarks>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
 

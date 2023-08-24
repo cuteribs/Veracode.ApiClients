@@ -17,7 +17,7 @@ namespace Veracode.ApiClients.SummaryReportApi
     /// <summary>
     /// Veracode Summary Report API Documentation
     /// </summary>
-    public partial interface ISummaryReportApi : System.IDisposable
+    public partial interface ISummaryReportApiClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.

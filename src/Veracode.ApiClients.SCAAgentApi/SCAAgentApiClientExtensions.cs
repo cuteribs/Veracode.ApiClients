@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api
+namespace Veracode.ApiClients.SCAAgentApi
 {
     using Models;
     using System.Collections;
@@ -13,7 +13,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for VeracodeSCAAgentAPISpecification.
+    /// Extension methods for SCAAgentApiClient.
     /// </summary>
     public static partial class SCAAgentApiClientExtensions
     {
@@ -123,8 +123,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// </param>
             /// <param name='id'>
             /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-            /// maven:net.minidev:json-smart:1.3.1:
+            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+            /// Example: maven:net.minidev:json-smart:1.3.1:
             /// </param>
             public static LibraryDetailed GetLibraryUsingGET(this ISCAAgentApiClient operations, string id)
             {
@@ -139,8 +139,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// </param>
             /// <param name='id'>
             /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-            /// maven:net.minidev:json-smart:1.3.1:
+            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+            /// Example: maven:net.minidev:json-smart:1.3.1:
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -195,8 +195,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// </param>
             /// <param name='id'>
             /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-            /// maven:net.minidev:json-smart:1.3.1:
+            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+            /// Example: maven:net.minidev:json-smart:1.3.1:
             /// </param>
             public static ComponentMetricsModel GetComponentActivityUsingGET(this ISCAAgentApiClient operations, string id)
             {
@@ -211,8 +211,8 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// </param>
             /// <param name='id'>
             /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt; Example:
-            /// maven:net.minidev:json-smart:1.3.1:
+            /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
+            /// Example: maven:net.minidev:json-smart:1.3.1:
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1515,7 +1515,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// <param name='workspaceId'>
             /// Workspace ID.
             /// </param>
-            public static ResourcesAgentToken GetWorkspaceAgentTokensUsingGET(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid workspaceId)
+            public static ResourcesAgentTokenWithoutAccessToken GetWorkspaceAgentTokensUsingGET(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid workspaceId)
             {
                 return operations.GetWorkspaceAgentTokensUsingGETAsync(agentId, workspaceId).GetAwaiter().GetResult();
             }
@@ -1538,7 +1538,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourcesAgentToken> GetWorkspaceAgentTokensUsingGETAsync(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid workspaceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ResourcesAgentTokenWithoutAccessToken> GetWorkspaceAgentTokensUsingGETAsync(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid workspaceId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWorkspaceAgentTokensUsingGETWithHttpMessagesAsync(agentId, workspaceId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1564,7 +1564,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// <param name='workspaceId'>
             /// Workspace ID.
             /// </param>
-            public static AgentToken GetWorkspaceAgentTokenUsingGET(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid tokenId, System.Guid workspaceId)
+            public static AgentTokenWithoutAccessToken GetWorkspaceAgentTokenUsingGET(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid tokenId, System.Guid workspaceId)
             {
                 return operations.GetWorkspaceAgentTokenUsingGETAsync(agentId, tokenId, workspaceId).GetAwaiter().GetResult();
             }
@@ -1590,7 +1590,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AgentToken> GetWorkspaceAgentTokenUsingGETAsync(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AgentTokenWithoutAccessToken> GetWorkspaceAgentTokenUsingGETAsync(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWorkspaceAgentTokenUsingGETWithHttpMessagesAsync(agentId, tokenId, workspaceId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1639,6 +1639,46 @@ namespace Veracode.ApiClients.SCAAgent.Api
             public static async Task RevokeWorkspaceAgentTokenUsingDELETEAsync(this ISCAAgentApiClient operations, System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RevokeWorkspaceAgentTokenUsingDELETEWithHttpMessagesAsync(agentId, tokenId, workspaceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// getApplicationProjects
+            /// </summary>
+            /// <remarks>
+            /// Get application projects.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='appGuid'>
+            /// Application GUID.
+            /// </param>
+            public static LinkedProjects GetApplicationProjectsUsingGET(this ISCAAgentApiClient operations, System.Guid appGuid)
+            {
+                return operations.GetApplicationProjectsUsingGETAsync(appGuid).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// getApplicationProjects
+            /// </summary>
+            /// <remarks>
+            /// Get application projects.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='appGuid'>
+            /// Application GUID.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LinkedProjects> GetApplicationProjectsUsingGETAsync(this ISCAAgentApiClient operations, System.Guid appGuid, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetApplicationProjectsUsingGETWithHttpMessagesAsync(appGuid, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>

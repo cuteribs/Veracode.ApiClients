@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -12,22 +12,24 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
     using System.Linq;
 
     /// <summary>
-    /// Resources[AgentToken]
+    /// Resources«AgentToken»
     /// </summary>
-    public partial class ResourcesAgentToken
+    public partial class ResourcesAgentTokenWithoutAccessToken
     {
         /// <summary>
-        /// Initializes a new instance of the ResourcesAgentToken class.
+        /// Initializes a new instance of the
+        /// ResourcesAgentTokenWithoutAccessToken class.
         /// </summary>
-        public ResourcesAgentToken()
+        public ResourcesAgentTokenWithoutAccessToken()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourcesAgentToken class.
+        /// Initializes a new instance of the
+        /// ResourcesAgentTokenWithoutAccessToken class.
         /// </summary>
-        public ResourcesAgentToken(IList<AgentToken> _embedded = default(IList<AgentToken>), IList<Link> _links = default(IList<Link>))
+        public ResourcesAgentTokenWithoutAccessToken(IList<AgentTokenWithoutAccessToken> _embedded = default(IList<AgentTokenWithoutAccessToken>), IList<Link> _links = default(IList<Link>))
         {
             this._embedded = _embedded;
             this._links = _links;
@@ -42,7 +44,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "_embedded")]
-        public IList<AgentToken> _embedded { get; set; }
+        public IList<AgentTokenWithoutAccessToken> _embedded { get; set; }
 
         /// <summary>
         /// </summary>

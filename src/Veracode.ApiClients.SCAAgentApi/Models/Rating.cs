@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -28,13 +28,14 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the Rating class.
         /// </summary>
-        /// <param name="score">Score</param>
+        /// <param name="score">The numerical score of the rating.</param>
         /// <param name="severity">Textual representation of the severity that
         /// corresponds to the numerical score of the rating. Possible values
         /// include: 'critical', 'high', 'medium', 'low', 'none'</param>
         /// <param name="method">Possible values include: 'CVSSv2',
         /// 'CVSSv3'</param>
-        /// <param name="vector">Vector</param>
+        /// <param name="vector">Textual representation of the metric values
+        /// used to score the vulnerability.</param>
         public Rating(double? score = default(double?), string severity = default(string), string method = default(string), string vector = default(string))
         {
             Score = score;
@@ -50,11 +51,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets score
+        /// Gets or sets the numerical score of the rating.
         /// </summary>
-        /// <remarks>
-        /// The numerical score of the rating.
-        /// </remarks>
         [JsonProperty(PropertyName = "score")]
         public double? Score { get; set; }
 
@@ -73,12 +71,9 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         public string Method { get; set; }
 
         /// <summary>
-        /// Gets or sets vector
+        /// Gets or sets textual representation of the metric values used to
+        /// score the vulnerability.
         /// </summary>
-        /// <remarks>
-        /// Textual representation of the metric values used to score the
-        /// vulnerability.
-        /// </remarks>
         [JsonProperty(PropertyName = "vector")]
         public string Vector { get; set; }
 

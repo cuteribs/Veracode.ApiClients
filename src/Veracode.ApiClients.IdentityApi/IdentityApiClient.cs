@@ -26,7 +26,7 @@ namespace Veracode.ApiClients.IdentityApi
     /// * https://api.veracode.eu/ - Veracode European Region
     /// * https://api.veracode.us/ - Veracode US Federal Region
     /// </summary>
-    public partial class IdentityApiClient : ServiceClient<IdentityApiClient>, AutoRest.ApiClients.Common.IApiClient, IIdentityApiClient
+    public partial class IdentityApiClient : ServiceClient<IdentityApiClient>, IIdentityApiClient
     {
         /// <summary>
         /// The base URI of the service.

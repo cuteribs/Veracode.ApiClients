@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -31,6 +31,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// 'open'</param>
         /// <param name="issueType">Possible values include: 'library',
         /// 'license', 'vulnerability'</param>
+        /// <param name="issueCreationSource">Possible values include: 'scan',
+        /// 'vulnerability'</param>
         /// <param name="libraryUpdatedReleaseDate">Library update release
         /// date. Only set for issue_type=library.</param>
         /// <param name="libraryUpdatedVersion">Library update version. Only
@@ -44,17 +46,19 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <param name="vulnerableMethods">Details about a vulnerable method
         /// in use in the library, including the type of method and the line
         /// number. Only set for issue_type=vulnerability.</param>
-        public IssueDetailed(IList<Link> _links = default(IList<Link>), string componentFileName = default(string), string componentFilePath = default(string), System.DateTime? createdDate = default(System.DateTime?), Scan fixedScan = default(Scan), System.Guid? id = default(System.Guid?), bool? ignored = default(bool?), string issueStatus = default(string), string issueType = default(string), LibrarySummary library = default(LibrarySummary), System.DateTime? libraryUpdatedReleaseDate = default(System.DateTime?), string libraryUpdatedVersion = default(string), LicenseSummary license = default(LicenseSummary), int? licenseCount = default(int?), Scan openedScan = default(Scan), string projectBranch = default(string), System.Guid? projectId = default(System.Guid?), string projectName = default(string), string projectTag = default(string), double? severity = default(double?), long? siteId = default(long?), VulnerabilitySummary vulnerability = default(VulnerabilitySummary), bool? vulnerableMethod = default(bool?), string vulnerableMethodInformation = default(string), System.Guid? workspaceId = default(System.Guid?), FixInfo fixInfo = default(FixInfo), IList<VulnerableMethod> vulnerableMethods = default(IList<VulnerableMethod>))
+        public IssueDetailed(IList<Link> _links = default(IList<Link>), string componentFileName = default(string), string componentFilePath = default(string), IList<string> componentFilePaths = default(IList<string>), System.DateTime? createdDate = default(System.DateTime?), Scan fixedScan = default(Scan), System.Guid? id = default(System.Guid?), bool? ignored = default(bool?), string issueStatus = default(string), string issueType = default(string), string issueCreationSource = default(string), LibrarySummary library = default(LibrarySummary), System.DateTime? libraryUpdatedReleaseDate = default(System.DateTime?), string libraryUpdatedVersion = default(string), LicenseSummary license = default(LicenseSummary), int? licenseCount = default(int?), Scan openedScan = default(Scan), string projectBranch = default(string), System.Guid? projectId = default(System.Guid?), string projectName = default(string), string projectTag = default(string), double? severity = default(double?), long? siteId = default(long?), VulnerabilitySummary vulnerability = default(VulnerabilitySummary), bool? vulnerableMethod = default(bool?), string vulnerableMethodInformation = default(string), System.Guid? workspaceId = default(System.Guid?), FixInfo fixInfo = default(FixInfo), IList<VulnerableMethod> vulnerableMethods = default(IList<VulnerableMethod>))
         {
             this._links = _links;
             ComponentFileName = componentFileName;
             ComponentFilePath = componentFilePath;
+            ComponentFilePaths = componentFilePaths;
             CreatedDate = createdDate;
             FixedScan = fixedScan;
             Id = id;
             Ignored = ignored;
             IssueStatus = issueStatus;
             IssueType = issueType;
+            IssueCreationSource = issueCreationSource;
             Library = library;
             LibraryUpdatedReleaseDate = libraryUpdatedReleaseDate;
             LibraryUpdatedVersion = libraryUpdatedVersion;
@@ -98,6 +102,11 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "component_file_paths")]
+        public IList<string> ComponentFilePaths { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "created_date")]
         public System.DateTime? CreatedDate { get; set; }
 
@@ -128,6 +137,12 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "issue_type")]
         public string IssueType { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'scan', 'vulnerability'
+        /// </summary>
+        [JsonProperty(PropertyName = "issue_creation_source")]
+        public string IssueCreationSource { get; set; }
 
         /// <summary>
         /// </summary>

@@ -26,7 +26,7 @@ namespace Veracode.ApiClients.FindingsApi
     /// * https://api.veracode.eu/ - Veracode European Region
     /// * https://api.veracode.us/ - Veracode US Federal Region
     /// </summary>
-    public partial class FindingsApiClient : ServiceClient<FindingsApiClient>, AutoRest.ApiClients.Common.IApiClient, IFindingsApiClient
+    public partial class FindingsApiClient : ServiceClient<FindingsApiClient>, IFindingsApiClient
     {
         /// <summary>
         /// The base URI of the service.

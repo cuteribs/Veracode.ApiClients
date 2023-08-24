@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -12,7 +12,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
     using System.Linq;
 
     /// <summary>
-    /// PagedResources[Project]
+    /// PagedResources«Project»
     /// </summary>
     public partial class PagedResourcesProject
     {

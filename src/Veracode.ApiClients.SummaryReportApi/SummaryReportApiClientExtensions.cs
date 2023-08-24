@@ -13,9 +13,9 @@ namespace Veracode.ApiClients.SummaryReportApi
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for SummaryReportApi.
+    /// Extension methods for SummaryReportApiClient.
     /// </summary>
-    public static partial class SummaryReportApiExtensions
+    public static partial class SummaryReportApiClientExtensions
     {
             /// <summary>
             /// Returns a Summary Report of a scan.
@@ -37,7 +37,7 @@ namespace Veracode.ApiClients.SummaryReportApi
             /// GUID of the associated development sandbox, if specified. The Summary
             /// Report is relative to this context parameter.
             /// </param>
-            public static SummaryReport GetSummaryReport(this ISummaryReportApi operations, string appGuid, IList<string> buildId = default(IList<string>), IList<string> context = default(IList<string>))
+            public static SummaryReport GetSummaryReport(this ISummaryReportApiClient operations, string appGuid, IList<string> buildId = default(IList<string>), IList<string> context = default(IList<string>))
             {
                 return operations.GetSummaryReportAsync(appGuid, buildId, context).GetAwaiter().GetResult();
             }
@@ -65,7 +65,7 @@ namespace Veracode.ApiClients.SummaryReportApi
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SummaryReport> GetSummaryReportAsync(this ISummaryReportApi operations, string appGuid, IList<string> buildId = default(IList<string>), IList<string> context = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SummaryReport> GetSummaryReportAsync(this ISummaryReportApiClient operations, string appGuid, IList<string> buildId = default(IList<string>), IList<string> context = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSummaryReportWithHttpMessagesAsync(appGuid, buildId, context, null, cancellationToken).ConfigureAwait(false))
                 {

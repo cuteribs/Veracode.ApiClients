@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -27,8 +27,10 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the Metadata class.
         /// </summary>
-        /// <param name="timestamp">Timestamp</param>
-        /// <param name="tools">Creation Tools</param>
+        /// <param name="timestamp">The date and time (timestamp) when the BOM
+        /// was created.</param>
+        /// <param name="tools">The tools used in the creation of the
+        /// BOM.</param>
         /// <param name="component">Component</param>
         /// <param name="author">Supplier</param>
         /// <param name="supplier">Supplier</param>
@@ -48,20 +50,15 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets timestamp
+        /// Gets or sets the date and time (timestamp) when the BOM was
+        /// created.
         /// </summary>
-        /// <remarks>
-        /// The date and time (timestamp) when the BOM was created.
-        /// </remarks>
         [JsonProperty(PropertyName = "timestamp")]
         public System.DateTime? Timestamp { get; set; }
 
         /// <summary>
-        /// Gets or sets creation Tools
+        /// Gets or sets the tools used in the creation of the BOM.
         /// </summary>
-        /// <remarks>
-        /// The tools used in the creation of the BOM.
-        /// </remarks>
         [JsonProperty(PropertyName = "tools")]
         public IList<Tool> Tools { get; set; }
 

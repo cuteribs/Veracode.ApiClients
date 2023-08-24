@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api
+namespace Veracode.ApiClients.SCAAgentApi
 {
     using Microsoft.Rest;
     using Models;
@@ -96,9 +96,9 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// getLibrary
         /// </summary>
         /// <param name='id'>
-        /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
-        /// Example: maven:net.minidev:json-smart:1.3.1:
+        /// Library instance reference ID. &lt;br/&gt; ID values have this
+        /// format: coordinateType:coordinate1:coordinate2:version:platform
+        /// &lt;br/&gt; Example: maven:net.minidev:json-smart:1.3.1:
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,9 +126,9 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// getComponentActivity
         /// </summary>
         /// <param name='id'>
-        /// Library instance reference ID. &lt;br/&gt; ID values have this format:
-        /// coordinateType:coordinate1:coordinate2:version:platform &lt;br/&gt;
-        /// Example: maven:net.minidev:json-smart:1.3.1:
+        /// Library instance reference ID. &lt;br/&gt; ID values have this
+        /// format: coordinateType:coordinate1:coordinate2:version:platform
+        /// &lt;br/&gt; Example: maven:net.minidev:json-smart:1.3.1:
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -733,7 +733,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<ResourcesAgentToken>> GetWorkspaceAgentTokensUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<ResourcesAgentTokenWithoutAccessToken>> GetWorkspaceAgentTokensUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// getWorkspaceAgentToken
@@ -756,7 +756,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<AgentToken>> GetWorkspaceAgentTokenUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<AgentTokenWithoutAccessToken>> GetWorkspaceAgentTokenUsingGETWithHttpMessagesAsync(System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// revokeWorkspaceAgentToken
@@ -777,6 +777,23 @@ namespace Veracode.ApiClients.SCAAgent.Api
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse> RevokeWorkspaceAgentTokenUsingDELETEWithHttpMessagesAsync(System.Guid agentId, System.Guid tokenId, System.Guid workspaceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// getApplicationProjects
+        /// </summary>
+        /// <remarks>
+        /// Get application projects.
+        /// </remarks>
+        /// <param name='appGuid'>
+        /// Application GUID.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<LinkedProjects>> GetApplicationProjectsUsingGETWithHttpMessagesAsync(System.Guid appGuid, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// getSbomCyclonedx

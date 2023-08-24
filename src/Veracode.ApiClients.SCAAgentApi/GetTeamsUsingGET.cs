@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api
+namespace Veracode.ApiClients.SCAAgentApi
 {
     using Microsoft.Rest;
     using Models;
@@ -42,7 +42,7 @@ namespace Veracode.ApiClients.SCAAgent.Api
         }
 
         /// <summary>
-        /// Gets a reference to the VeracodeSCAAgentAPISpecification
+        /// Gets a reference to the SCAAgentApiClient
         /// </summary>
         public SCAAgentApiClient Client { get; private set; }
 

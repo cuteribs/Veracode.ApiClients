@@ -20,7 +20,7 @@ namespace Veracode.ApiClients.SummaryReportApi
     /// <summary>
     /// Veracode Summary Report API Documentation
     /// </summary>
-    public partial class SummaryReportApi : ServiceClient<SummaryReportApi>, AutoRest.ApiClients.Common.IApiClient, ISummaryReportApi
+    public partial class SummaryReportApiClient : ServiceClient<SummaryReportApiClient>, ISummaryReportApiClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -38,31 +38,31 @@ namespace Veracode.ApiClients.SummaryReportApi
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the SummaryReportApi class.
+        /// Initializes a new instance of the SummaryReportApiClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling SummaryReportApi.Dispose(). False: will not dispose provided httpClient</param>
-        public SummaryReportApi(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling SummaryReportApiClient.Dispose(). False: will not dispose provided httpClient</param>
+        public SummaryReportApiClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SummaryReportApi class.
+        /// Initializes a new instance of the SummaryReportApiClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public SummaryReportApi(params DelegatingHandler[] handlers) : base(handlers)
+        public SummaryReportApiClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SummaryReportApi class.
+        /// Initializes a new instance of the SummaryReportApiClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -70,13 +70,13 @@ namespace Veracode.ApiClients.SummaryReportApi
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public SummaryReportApi(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        public SummaryReportApiClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SummaryReportApi class.
+        /// Initializes a new instance of the SummaryReportApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -87,7 +87,7 @@ namespace Veracode.ApiClients.SummaryReportApi
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SummaryReportApi(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public SummaryReportApiClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -97,7 +97,7 @@ namespace Veracode.ApiClients.SummaryReportApi
         }
 
         /// <summary>
-        /// Initializes a new instance of the SummaryReportApi class.
+        /// Initializes a new instance of the SummaryReportApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -111,7 +111,7 @@ namespace Veracode.ApiClients.SummaryReportApi
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SummaryReportApi(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public SummaryReportApiClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {

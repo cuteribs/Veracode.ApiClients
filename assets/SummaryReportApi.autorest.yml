@@ -1,0 +1,7 @@
+﻿input-file: ../src/Veracode.ApiClients.SummaryReportApi/Veracode-veracode-summary_report_api-v2-resolved.json
+output-folder: ../src/Veracode.ApiClients.SummaryReportApi/
+clear-output-folder: false
+csharp: true
+legacy: true
+namespace: Veracode.ApiClients.SummaryReportApi
+override-client-name: SummaryReportApiClient

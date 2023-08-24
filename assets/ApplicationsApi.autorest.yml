@@ -1,0 +1,7 @@
+﻿input-file: ../src/Veracode.ApiClients.ApplicationsApi/Veracode-veracode-applications_api_specification-1.0-resolved.json
+output-folder: ../src/Veracode.ApiClients.ApplicationsApi/
+clear-output-folder: false
+csharp: true
+legacy: true
+namespace: Veracode.ApiClients.ApplicationsApi
+override-client-name: ApplicationsApiClient

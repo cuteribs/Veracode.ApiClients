@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -27,8 +27,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the OrganizationalEntity class.
         /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="url">URL</param>
+        /// <param name="url">The URL of the organization. Multiple URLs are
+        /// allowed.</param>
         public OrganizationalEntity(string name = default(string), IList<string> url = default(IList<string>))
         {
             Name = name;
@@ -42,17 +42,14 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets URL
+        /// Gets or sets the URL of the organization. Multiple URLs are
+        /// allowed.
         /// </summary>
-        /// <remarks>
-        /// The URL of the organization. Multiple URLs are allowed.
-        /// </remarks>
         [JsonProperty(PropertyName = "url")]
         public IList<string> Url { get; set; }
 

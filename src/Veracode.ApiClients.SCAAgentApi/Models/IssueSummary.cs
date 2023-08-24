@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -31,6 +31,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// 'open'</param>
         /// <param name="issueType">Possible values include: 'library',
         /// 'license', 'vulnerability'</param>
+        /// <param name="issueCreationSource">Possible values include: 'scan',
+        /// 'vulnerability'</param>
         /// <param name="libraryUpdatedReleaseDate">Library update release
         /// date. Only set for issue_type=library.</param>
         /// <param name="libraryUpdatedVersion">Library update version. Only
@@ -41,7 +43,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// issue_type=vulnerability.</param>
         /// <param name="vulnerableMethodInformation">Only set for
         /// issue_type=vulnerability.</param>
-        public IssueSummary(IList<Link> _links = default(IList<Link>), System.DateTime? createdDate = default(System.DateTime?), System.Guid? id = default(System.Guid?), bool? ignored = default(bool?), string issueStatus = default(string), string issueType = default(string), LibrarySummary library = default(LibrarySummary), System.DateTime? libraryUpdatedReleaseDate = default(System.DateTime?), string libraryUpdatedVersion = default(string), LicenseSummary license = default(LicenseSummary), int? licenseCount = default(int?), string projectBranch = default(string), System.Guid? projectId = default(System.Guid?), string projectName = default(string), string projectTag = default(string), double? severity = default(double?), long? siteId = default(long?), VulnerabilitySummary vulnerability = default(VulnerabilitySummary), bool? vulnerableMethod = default(bool?), string vulnerableMethodInformation = default(string), System.Guid? workspaceId = default(System.Guid?))
+        public IssueSummary(IList<Link> _links = default(IList<Link>), System.DateTime? createdDate = default(System.DateTime?), System.Guid? id = default(System.Guid?), bool? ignored = default(bool?), string issueStatus = default(string), string issueType = default(string), string issueCreationSource = default(string), LibrarySummary library = default(LibrarySummary), System.DateTime? libraryUpdatedReleaseDate = default(System.DateTime?), string libraryUpdatedVersion = default(string), LicenseSummary license = default(LicenseSummary), int? licenseCount = default(int?), string projectBranch = default(string), System.Guid? projectId = default(System.Guid?), string projectName = default(string), string projectTag = default(string), double? severity = default(double?), long? siteId = default(long?), VulnerabilitySummary vulnerability = default(VulnerabilitySummary), bool? vulnerableMethod = default(bool?), string vulnerableMethodInformation = default(string), System.Guid? workspaceId = default(System.Guid?))
         {
             this._links = _links;
             CreatedDate = createdDate;
@@ -49,6 +51,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
             Ignored = ignored;
             IssueStatus = issueStatus;
             IssueType = issueType;
+            IssueCreationSource = issueCreationSource;
             Library = library;
             LibraryUpdatedReleaseDate = libraryUpdatedReleaseDate;
             LibraryUpdatedVersion = libraryUpdatedVersion;
@@ -104,6 +107,12 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "issue_type")]
         public string IssueType { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'scan', 'vulnerability'
+        /// </summary>
+        [JsonProperty(PropertyName = "issue_creation_source")]
+        public string IssueCreationSource { get; set; }
 
         /// <summary>
         /// </summary>

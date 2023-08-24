@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -25,8 +25,8 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the OrganizationalContact class.
         /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="email">Email Address</param>
+        /// <param name="name">The name of a contact.</param>
+        /// <param name="email">The email address of the contact.</param>
         public OrganizationalContact(string name = default(string), string email = default(string))
         {
             Name = name;
@@ -40,20 +40,14 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name
+        /// Gets or sets the name of a contact.
         /// </summary>
-        /// <remarks>
-        /// The name of a contact.
-        /// </remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets email Address
+        /// Gets or sets the email address of the contact.
         /// </summary>
-        /// <remarks>
-        /// The email address of the contact.
-        /// </remarks>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
 

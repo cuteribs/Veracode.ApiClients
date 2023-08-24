@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33502.350
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTester", "ApiTester\ApiTester.csproj", "{DDC36AF6-B321-40FF-88AE-D113FF867351}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.SCAAgentApi", "Veracode.ApiClients.SCAAgentApi\Veracode.ApiClients.SCAAgentApi.csproj", "{C23F0593-896F-4B88-AD4C-5D0145A5CA2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.ApplicationsApi", "Veracode.ApiClients.ApplicationsApi\Veracode.ApiClients.ApplicationsApi.csproj", "{8822BF15-4B22-48AC-9D71-C1A929C19B87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.Helper", "Veracode.ApiClients.Helper\Veracode.ApiClients.Helper.csproj", "{F5FA54B4-319D-4679-ACDD-F4B80113B34A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.SummaryReportApi", "Veracode.ApiClients.SummaryReportApi\Veracode.ApiClients.SummaryReportApi.csproj", "{11C21C6B-502E-4A47-A59D-FC9595D72374}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.FindingsApi", "Veracode.ApiClients.FindingsApi\Veracode.ApiClients.FindingsApi.csproj", "{6A39E497-D8D8-4B37-AA41-4D9D12554547}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.DynamicFlawApi", "Veracode.ApiClients.DynamicFlawApi\Veracode.ApiClients.DynamicFlawApi.csproj", "{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veracode.ApiClients.IdentityApi", "Veracode.ApiClients.IdentityApi\Veracode.ApiClients.IdentityApi.csproj", "{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{691542A2-7461-4F56-9FFE-E843607017AA}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDC36AF6-B321-40FF-88AE-D113FF867351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC36AF6-B321-40FF-88AE-D113FF867351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC36AF6-B321-40FF-88AE-D113FF867351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC36AF6-B321-40FF-88AE-D113FF867351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23F0593-896F-4B88-AD4C-5D0145A5CA2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23F0593-896F-4B88-AD4C-5D0145A5CA2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23F0593-896F-4B88-AD4C-5D0145A5CA2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23F0593-896F-4B88-AD4C-5D0145A5CA2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8822BF15-4B22-48AC-9D71-C1A929C19B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8822BF15-4B22-48AC-9D71-C1A929C19B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8822BF15-4B22-48AC-9D71-C1A929C19B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8822BF15-4B22-48AC-9D71-C1A929C19B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FA54B4-319D-4679-ACDD-F4B80113B34A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FA54B4-319D-4679-ACDD-F4B80113B34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FA54B4-319D-4679-ACDD-F4B80113B34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FA54B4-319D-4679-ACDD-F4B80113B34A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C21C6B-502E-4A47-A59D-FC9595D72374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C21C6B-502E-4A47-A59D-FC9595D72374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C21C6B-502E-4A47-A59D-FC9595D72374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C21C6B-502E-4A47-A59D-FC9595D72374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A39E497-D8D8-4B37-AA41-4D9D12554547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A39E497-D8D8-4B37-AA41-4D9D12554547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A39E497-D8D8-4B37-AA41-4D9D12554547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A39E497-D8D8-4B37-AA41-4D9D12554547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF594CF-2A78-4E29-BFC1-8D64B72209EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220309AF-E7CE-4BB8-BF0A-F8D77D7FCECA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7E030D1-26E4-49E3-8A01-9A8FD0AECC59}
+	EndGlobalSection
+EndGlobal

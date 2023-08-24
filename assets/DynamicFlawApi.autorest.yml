@@ -1,0 +1,7 @@
+﻿input-file: ../src/Veracode.ApiClients.DynamicFlawApi/Veracode-veracode-dynamic_flaw_api-v2-resolved.json
+output-folder: ../src/Veracode.ApiClients.DynamicFlawApi/
+clear-output-folder: false
+csharp: true
+legacy: true
+namespace: Veracode.ApiClients.DynamicFlawApi
+override-client-name: DynamicFlawApiClient

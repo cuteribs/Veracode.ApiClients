@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.Applications.Api
+namespace Veracode.ApiClients.ApplicationsApi
 {
     using Microsoft.Rest;
     using Models;

@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -25,8 +25,9 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the Property class.
         /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="value">Value</param>
+        /// <param name="name">The name of the property. Duplicate names are
+        /// allowed, each potentially having a different value.</param>
+        /// <param name="value">The value of the property.</param>
         public Property(string name = default(string), string value = default(string))
         {
             Name = name;
@@ -40,21 +41,15 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name
+        /// Gets or sets the name of the property. Duplicate names are allowed,
+        /// each potentially having a different value.
         /// </summary>
-        /// <remarks>
-        /// The name of the property. Duplicate names are allowed, each
-        /// potentially having a different value.
-        /// </remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets value
+        /// Gets or sets the value of the property.
         /// </summary>
-        /// <remarks>
-        /// The value of the property.
-        /// </remarks>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 

@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.Applications.Api.Models
+namespace Veracode.ApiClients.ApplicationsApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;

@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -25,7 +25,6 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the LicenseChoice class.
         /// </summary>
-        /// <param name="expression">SPDX License Expression</param>
         public LicenseChoice(License license = default(License), string expression = default(string))
         {
             License = license;
@@ -44,7 +43,6 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         public License License { get; set; }
 
         /// <summary>
-        /// Gets or sets SPDX License Expression
         /// </summary>
         [JsonProperty(PropertyName = "expression")]
         public string Expression { get; set; }

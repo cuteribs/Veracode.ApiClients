@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api
+namespace Veracode.ApiClients.SCAAgentApi
 {
     using Models;
     using System.Threading;

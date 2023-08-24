@@ -1,0 +1,7 @@
+﻿input-file: ../src/Veracode.ApiClients.SCAAgentApi/Veracode-veracode-sca_agent_api_specification-3.0-resolved.json
+output-folder: ../src/Veracode.ApiClients.SCAAgentApi/
+clear-output-folder: false
+csharp: true
+legacy: true
+namespace: Veracode.ApiClients.SCAAgentApi
+override-client-name: SCAAgentApiClient

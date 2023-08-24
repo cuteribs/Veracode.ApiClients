@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
@@ -28,16 +28,71 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the Component class.
         /// </summary>
-        /// <param name="type">Component Type</param>
-        /// <param name="name">Component Name</param>
+        /// <param name="type">Specifies the type of component. For software
+        /// components, classify as application if no more specific appropriate
+        /// classification is available or cannot be determined for the
+        /// component. Types include:
+        ///
+        /// * __application__ = A software application. Refer to
+        /// [https://en.wikipedia.org/wiki/Application_software](https://en.wikipedia.org/wiki/Application_software)
+        /// for information about applications.
+        /// * __framework__ = A software framework. Refer to
+        /// [https://en.wikipedia.org/wiki/Software_framework](https://en.wikipedia.org/wiki/Software_framework)
+        /// for information on how frameworks vary slightly from libraries.
+        /// * __library__ = A software library. Refer to
+        /// [https://en.wikipedia.org/wiki/Library_(computing)](https://en.wikipedia.org/wiki/Library_(computing))
+        /// for information about libraries. All third-party and open source
+        /// reusable components are likely libraries. If the library also has
+        /// key features of a framework, then it should be classified as a
+        /// framework. If not, or if it is unknown, then Veracode recommends
+        /// classifying as a library.
+        /// * __container__ = A packaging and/or runtime format, not specific
+        /// to any particular technology, which isolates software inside the
+        /// container from software outside of a container through
+        /// virtualization technology. Refer to
+        /// [https://en.wikipedia.org/wiki/OS-level_virtualization](https://en.wikipedia.org/wiki/OS-level_virtualization)
+        /// * __operating-system__ = A software operating system without regard
+        /// to deployment model (i.e. installed on physical hardware, virtual
+        /// machine, image, etc) Refer to
+        /// [https://en.wikipedia.org/wiki/Operating_system](https://en.wikipedia.org/wiki/Operating_system)
+        /// * __device__ = A hardware device such as a processor or chipset. A
+        /// hardware device containing firmware should include a component for
+        /// the physical hardware itself, and another component of type
+        /// 'firmware' or 'operating-system' (whichever is relevant),
+        /// describing information about the software running on the device.
+        /// * __firmware__ = A special type of software that provides low-level
+        /// control over a devices hardware. Refer to
+        /// [https://en.wikipedia.org/wiki/Firmware](https://en.wikipedia.org/wiki/Firmware)
+        /// * __file__ = A computer file. Refer to
+        /// [https://en.wikipedia.org/wiki/Computer_file](https://en.wikipedia.org/wiki/Computer_file)
+        /// for information about files. Possible values include:
+        /// 'application', 'library'</param>
+        /// <param name="name">The name of the component. This often is a
+        /// shortened, single name of the component. Examples include:
+        /// commons-lang3 and jquery</param>
         /// <param name="bomRef">BOM Reference</param>
         /// <param name="supplier">Component Supplier</param>
-        /// <param name="group">Component Group</param>
-        /// <param name="version">Component Version</param>
-        /// <param name="hashes">Component Hashes</param>
-        /// <param name="licenses">Component License(s)</param>
-        /// <param name="purl">Component Package URL (purl)</param>
-        /// <param name="properties">Properties</param>
+        /// <param name="group">The grouping name or identifier. This often is
+        /// a shortened, single name of the company or project that produced
+        /// the component, or the source package or domain name. Do not use
+        /// whitespace or special characters. Examples include: apache,
+        /// org.apache.commons, and apache.org.</param>
+        /// <param name="version">The component version. The version should
+        /// comply with semantic versioning.</param>
+        /// <param name="purl">Specifies the package-url (purl). The purl, if
+        /// specified, MUST be valid and conform to the specification defined
+        /// at:
+        /// [https://github.com/package-url/purl-spec](https://github.com/package-url/purl-spec)</param>
+        /// <param name="properties">Provides the ability to document
+        /// properties in a name-value store. This provides flexibility to
+        /// include data not officially supported in the standard without
+        /// having to use additional namespaces or create extensions. Unlike
+        /// key-value stores, properties support duplicate names, each
+        /// potentially having different values. Property names of interest to
+        /// the general public are encouraged to be registered in the
+        /// [CycloneDX Property
+        /// Taxonomy](https://github.com/CycloneDX/cyclonedx-property-taxonomy).
+        /// Formal registration is optional.</param>
         public Component(string type, string name, string bomRef = default(string), OrganizationalEntity supplier = default(OrganizationalEntity), string group = default(string), string version = default(string), IList<Hash> hashes = default(IList<Hash>), IList<LicenseChoice> licenses = default(IList<LicenseChoice>), string purl = default(string), IList<Property> properties = default(IList<Property>))
         {
             Type = type;
@@ -59,12 +114,10 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets component Type
-        /// </summary>
-        /// <remarks>
-        /// Specifies the type of component. For software components, classify
-        /// as application if no more specific appropriate classification is
-        /// available or cannot be determined for the component. Types include:
+        /// Gets or sets specifies the type of component. For software
+        /// components, classify as application if no more specific appropriate
+        /// classification is available or cannot be determined for the
+        /// component. Types include:
         ///
         /// * __application__ = A software application. Refer to
         /// [https://en.wikipedia.org/wiki/Application_software](https://en.wikipedia.org/wiki/Application_software)
@@ -100,7 +153,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// [https://en.wikipedia.org/wiki/Computer_file](https://en.wikipedia.org/wiki/Computer_file)
         /// for information about files. Possible values include:
         /// 'application', 'library'
-        /// </remarks>
+        /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
@@ -126,75 +179,60 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         public OrganizationalEntity Supplier { get; set; }
 
         /// <summary>
-        /// Gets or sets component Group
+        /// Gets or sets the grouping name or identifier. This often is a
+        /// shortened, single name of the company or project that produced the
+        /// component, or the source package or domain name. Do not use
+        /// whitespace or special characters. Examples include: apache,
+        /// org.apache.commons, and apache.org.
         /// </summary>
-        /// <remarks>
-        /// The grouping name or identifier. This often is a shortened, single
-        /// name of the company or project that produced the component, or the
-        /// source package or domain name. Do not use whitespace or special
-        /// characters. Examples include: apache, org.apache.commons, and
-        /// apache.org.
-        /// </remarks>
         [JsonProperty(PropertyName = "group")]
         public string Group { get; set; }
 
         /// <summary>
-        /// Gets or sets component Name
+        /// Gets or sets the name of the component. This often is a shortened,
+        /// single name of the component. Examples include: commons-lang3 and
+        /// jquery
         /// </summary>
-        /// <remarks>
-        /// The name of the component. This often is a shortened, single name
-        /// of the component. Examples include: commons-lang3 and jquery
-        /// </remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets component Version
+        /// Gets or sets the component version. The version should comply with
+        /// semantic versioning.
         /// </summary>
-        /// <remarks>
-        /// The component version. The version should comply with semantic
-        /// versioning.
-        /// </remarks>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
 
         /// <summary>
-        /// Gets or sets component Hashes
         /// </summary>
         [JsonProperty(PropertyName = "hashes")]
         public IList<Hash> Hashes { get; set; }
 
         /// <summary>
-        /// Gets or sets component License(s)
         /// </summary>
         [JsonProperty(PropertyName = "licenses")]
         public IList<LicenseChoice> Licenses { get; set; }
 
         /// <summary>
-        /// Gets or sets component Package URL (purl)
-        /// </summary>
-        /// <remarks>
-        /// Specifies the package-url (purl). The purl, if specified, MUST be
-        /// valid and conform to the specification defined at:
+        /// Gets or sets specifies the package-url (purl). The purl, if
+        /// specified, MUST be valid and conform to the specification defined
+        /// at:
         /// [https://github.com/package-url/purl-spec](https://github.com/package-url/purl-spec)
-        /// </remarks>
+        /// </summary>
         [JsonProperty(PropertyName = "purl")]
         public string Purl { get; set; }
 
         /// <summary>
-        /// Gets or sets properties
-        /// </summary>
-        /// <remarks>
-        /// Provides the ability to document properties in a name-value store.
-        /// This provides flexibility to include data not officially supported
-        /// in the standard without having to use additional namespaces or
-        /// create extensions. Unlike key-value stores, properties support
-        /// duplicate names, each potentially having different values. Property
-        /// names of interest to the general public are encouraged to be
-        /// registered in the [CycloneDX Property
+        /// Gets or sets provides the ability to document properties in a
+        /// name-value store. This provides flexibility to include data not
+        /// officially supported in the standard without having to use
+        /// additional namespaces or create extensions. Unlike key-value
+        /// stores, properties support duplicate names, each potentially having
+        /// different values. Property names of interest to the general public
+        /// are encouraged to be registered in the [CycloneDX Property
         /// Taxonomy](https://github.com/CycloneDX/cyclonedx-property-taxonomy).
         /// Formal registration is optional.
-        /// </remarks>
+        /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public IList<Property> Properties { get; set; }
 

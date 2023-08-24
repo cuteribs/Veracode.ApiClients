@@ -21,7 +21,7 @@ namespace Veracode.ApiClients.DynamicFlawApi
     /// Replacement for
     /// https://analysiscenter.veracode.com/api/5.0/getdynamicflaws.do
     /// </summary>
-    public partial class DynamicFlawApiClient : ServiceClient<DynamicFlawApiClient>, AutoRest.ApiClients.Common.IApiClient, IDynamicFlawApiClient
+    public partial class DynamicFlawApiClient : ServiceClient<DynamicFlawApiClient>, IDynamicFlawApiClient
     {
         /// <summary>
         /// The base URI of the service.

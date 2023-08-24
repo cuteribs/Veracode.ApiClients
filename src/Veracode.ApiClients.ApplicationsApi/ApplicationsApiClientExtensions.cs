@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.Applications.Api
+namespace Veracode.ApiClients.ApplicationsApi
 {
     using Models;
     using System.Collections;
@@ -13,7 +13,7 @@ namespace Veracode.ApiClients.Applications.Api
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for VeracodeApplicationsAPISpecification.
+    /// Extension methods for ApplicationsApiClient.
     /// </summary>
     public static partial class ApplicationsApiClientExtensions
     {

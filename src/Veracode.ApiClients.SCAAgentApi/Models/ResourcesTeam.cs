@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Veracode.ApiClients.SCAAgent.Api.Models
+namespace Veracode.ApiClients.SCAAgentApi.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -12,7 +12,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
     using System.Linq;
 
     /// <summary>
-    /// Resources[Team]
+    /// Resources«Team»
     /// </summary>
     public partial class ResourcesTeam
     {
@@ -27,7 +27,7 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// <summary>
         /// Initializes a new instance of the ResourcesTeam class.
         /// </summary>
-        public ResourcesTeam(IList<Team> _embedded = default, IList<Link> _links = default(IList<Link>))
+        public ResourcesTeam(IList<Team> _embedded = default(IList<Team>), IList<Link> _links = default(IList<Link>))
         {
             this._embedded = _embedded;
             this._links = _links;
@@ -48,5 +48,6 @@ namespace Veracode.ApiClients.SCAAgent.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "_links")]
         public IList<Link> _links { get; set; }
-	}
+
+    }
 }
