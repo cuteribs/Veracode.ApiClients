@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Veracode.ApiClients.Applications.Api;
+using Veracode.ApiClients.ApplicationsApi;
 using Veracode.ApiClients.Helper;
 using Veracode.ApiClients.IdentityApi;
-using Veracode.ApiClients.SCAAgent.Api;
-using Veracode.ApiClients.SCAAgent.Api.Patches;
+using Veracode.ApiClients.SCAAgentApi;
+using Veracode.ApiClients.SCAAgentApi.Patches;
 using Veracode.ApiClients.SummaryReportApi;
 
 namespace ApiTester;
@@ -86,13 +86,13 @@ class Program
 	static void GetSummaryReport(string appGuid)
 	{
 		ServiceCollection services = new();
-		services.AddApiClient<ISummaryReportApi, SummaryReportApi>(o =>
+		services.AddApiClient<ISummaryReportApiClient, SummaryReportApiClient>(o =>
 		{
 			Configuration.Bind("VeracodeClientOptions", o);
 			o.BaseUri = new("https://api.veracode.com");
 		});
 		var serviceProvider = services.BuildServiceProvider();
-		var client = serviceProvider.GetRequiredService<ISummaryReportApi>();
+		var client = serviceProvider.GetRequiredService<ISummaryReportApiClient>();
 
 		var response = client.GetSummaryReport(appGuid);
 		var result = response;

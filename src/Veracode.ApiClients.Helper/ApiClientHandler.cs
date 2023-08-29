@@ -21,6 +21,8 @@ public class ApiClientHandler : DelegatingHandler
 		CancellationToken cancellationToken
 	)
 	{
+		_options.PreSendConfigure?.Invoke(request);
+
 		var uri = request.RequestUri!;
 		var authorization = GenerateAuthorization(
 			_options.ApiId,
