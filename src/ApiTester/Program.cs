@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System.Net;
 using Veracode.ApiClients.ApplicationsApi;
 using Veracode.ApiClients.Helper;
 using Veracode.ApiClients.IdentityApi;
@@ -29,6 +30,8 @@ class Program
 			.AddUserSecrets<Program>()
 			.Build();
 
+		HttpClient.DefaultProxy = new WebProxy("http://localhost:10082");
+
 		GetUsers();
 
 		GetApplications();
@@ -47,10 +50,13 @@ class Program
 		var serviceProvider = services.BuildServiceProvider();
 		var client = serviceProvider.GetRequiredService<IIdentityApiClient>();
 
-		var response = client.GetUserApiCredsUsingGET();
-		var result = response;
+		var users = client.GetUserApiCredsUsingGET();
 		Console.WriteLine("Users");
-		Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+		Console.WriteLine(JsonConvert.SerializeObject(users, Formatting.Indented));
+
+		var teams = client.GetTeamsUsingGET();
+		Console.WriteLine("Teams");
+		Console.WriteLine(JsonConvert.SerializeObject(teams, Formatting.Indented));
 	}
 
 	static void GetApplications()
@@ -64,7 +70,7 @@ class Program
 		var serviceProvider = services.BuildServiceProvider();
 		var client = serviceProvider.GetRequiredService<IApplicationsApiClient>();
 
-		var response = client.GetApplicationsUsingGET(team: "Veracity-Maritime-OVD");
+		var response = client.GetApplicationsUsingGET(team: "Veracity-OVD");
 		var result = response._embedded.Applications.Select(a => new
 		{
 			AppId = a.Id,

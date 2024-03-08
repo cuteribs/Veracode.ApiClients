@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+	  <TargetFrameworks>netcoreapp3.1;net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>40d4c3dd-1286-4dad-afd8-2d1de12ef270</UserSecretsId>
+    <UserSecretsId>$(MSBuildProjectName)</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
